@@ -4,7 +4,7 @@ const db = require('../db');
 
 //authentication code
 
-router.use('/users', require('./users'));
+// router.use('/users', require('./users'));
 router.use('/mantras', require('./mantras'));
 router.use('/lines', require('./lines'));
 
