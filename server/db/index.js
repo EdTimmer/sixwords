@@ -4,7 +4,7 @@ const Mantra = require('./Mantra');
 const Line = require('./Line');
 const seed = require('./seed');
 
-Line.belongsTo(Mantra);
+Line.belongsTo(Mantra, { onDelete: 'CASCADE' });
 Mantra.hasMany(Line);
 
 const syncAndSeed = () => {
