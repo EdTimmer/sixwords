@@ -31,15 +31,18 @@ class Mantra extends React.Component {
       return null;
     }
     return (
-      <div className="conatiner">
+      <div className="conatiner" align="center">
         <h3>{mantra.name}</h3>
+        <br />
         <div>
           {
-            counter > 0 ? (lineToShow.text) : (null)
+            counter > 0 ? (<h1>{lineToShow.text}</h1>) : (null)
           }
         </div>
         <br />
         <button onClick={onStart}>Start</button>
+        <br />
+        <img align="center" src={mantra.image} height={600} />
       </div>
     )
   }

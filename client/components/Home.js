@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 const Home = () => {
   return (
     <div className="container">
-      <h1>Home</h1>
-      <hr />
+      <img align="center" src="/images/Kangchenjunga.jpg" />
     </div>
   );
 };

@@ -5,6 +5,9 @@ const Mantra = conn.define('mantra', {
   name: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  image: {
+    type: Sequelize.STRING
   }
 });
 
