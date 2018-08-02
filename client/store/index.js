@@ -1,12 +1,11 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-// import logger from 'redux-logger';
+import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import mantras from './mantras';
 import lines from './lines';
 
 const reducers = combineReducers({ mantras, lines });
-// const middleware = applyMiddleware(thunk, logger);
-const middleware = applyMiddleware(thunk);
+const middleware = applyMiddleware(thunk, logger);
 
 const store = createStore(reducers, middleware);
 

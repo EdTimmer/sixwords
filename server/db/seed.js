@@ -6,6 +6,10 @@ const mantras = [
   {
     id: 1,
     name: 'Six Words'
+  },
+  {
+    id: 2,
+    name: 'All Shall Be Well'
   }
 ];
 
@@ -39,6 +43,21 @@ const lines = [
     text: `Relax and rest`,
     sequence: 6,
     mantraId: 1
+  },
+  {
+    text: `All shall be well`,
+    sequence: 1,
+    mantraId: 2
+  },
+  {
+    text: `And all shall be well`,
+    sequence: 2,
+    mantraId: 2
+  },
+  {
+    text: `And every manner of thing shall be well`,
+    sequence: 3,
+    mantraId: 2
   },
 ];
 
