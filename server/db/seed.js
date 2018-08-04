@@ -5,12 +5,12 @@ const Line = require('./Line');
 const mantras = [
   {
     id: 1,
-    name: 'Six Words',
+    name: 'Six Words - by Tilopa',
     image: '/images/Tilopa.jpg'
   },
   {
     id: 2,
-    name: 'All Shall Be Well',
+    name: 'All Shall Be Well - by Julian of Norwich',
     image: '/images/Julian.jpg'
   }
 ];
@@ -42,7 +42,7 @@ const lines = [
     mantraId: 1
   },
   {
-    text: `Relax and rest`,
+    text: `Relax right now and rest`,
     sequence: 6,
     mantraId: 1
   },
