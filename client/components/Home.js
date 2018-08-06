@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 
 const Home = () => {
   return (
-    <div className="container">
-      <img align="center" src="/images/Kangchenjunga.jpg" />
+    <div className="container center-align">
+      <p></p>
+      <p></p>
+      <img src="/images/Kangchenjunga.jpg" />
     </div>
   );
 };

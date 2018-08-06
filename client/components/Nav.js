@@ -4,13 +4,17 @@ import { NavLink } from 'react-router-dom';
 
 const Nav = () => {
   return (
-    <div className="navbar navbar-expand-lg navbar-light container">
-      <div className="nav-link">
-        <NavLink to="/" className="navbar home">home</NavLink>
-      </div>
-      <div className="nav-item">
-        <NavLink to="/mantras" className="navbar">mantras</NavLink>
-      </div>
+    <div>
+      <nav>
+        <div className="nav-wrapper">
+          <a href="#" className="brand-logo right">Six Words</a>
+          <ul id="nav-mobile" className="left hide-on-med-and-down">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/mantras">mantras</a></li>
+          
+          </ul>
+        </div>
+      </nav>
     </div>
   );
 };

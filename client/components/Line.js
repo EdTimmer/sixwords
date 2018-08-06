@@ -3,10 +3,10 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';  //use 
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 // import { connect } from 'react-redux';
 
-const Line = () => {
+const Line = ({lineToShow}) => {
   return (
     <div>
-      <h1>TEST</h1>
+      <h1>{lineToShow.text}</h1>
     </div>
   )
 }

@@ -5,7 +5,7 @@ const Line = require('./Line');
 const mantras = [
   {
     id: 1,
-    name: 'Six Words - by Tilopa',
+    name: `Tilopa's Six Words`,
     image: '/images/Tilopa.jpg'
   },
   {
