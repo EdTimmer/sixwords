@@ -94,7 +94,8 @@ class Mantra extends React.Component {
           <div className="s8 offset-s2 center-align">
             <div className="card blue-grey darken-4 z-depth-3" >
               <div className="card-content" style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`}}>
-                <h1 className="white-text">{lineToShow ? lineToShow.text : null}</h1>
+                {/*<h1 className="white-text">{lineToShow ? lineToShow.text : null}</h1>*/}
+                <h1 className="white-text">{mantra.textlines ? mantra.textlines[counter] : null}</h1>
               </div>
       
             </div>
