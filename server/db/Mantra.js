@@ -6,8 +6,17 @@ const Mantra = conn.define('mantra', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: true
+  },
   image: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  textlines: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+    // allowNull: false
   }
 });
 

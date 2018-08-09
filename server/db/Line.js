@@ -6,7 +6,10 @@ const Line = conn.define('line', {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  sequence: Sequelize.INTEGER
+  sequence: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  }
 });
 
 module.exports = Line;

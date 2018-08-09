@@ -1,10 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import Line from './Line';
-
-// const styles = {
-//   transition: 'all 1s ease-out'
-// };
 
 class Mantra extends React.Component {
   constructor(props) {
@@ -26,7 +21,7 @@ class Mantra extends React.Component {
     if (that.state.counter > that.props.linesOfThisMantra.length) {
       that.setState({counter: 0})
     }
-    let promise = new Promise(function(resolve, reject){    
+    let promise = new Promise(function(resolve, reject) {
       setTimeout(function() {
         that.setState({opacity: 1, scale: 1.2});
         resolve({});
@@ -63,7 +58,6 @@ class Mantra extends React.Component {
       this.fadeIn()      
       .then(this.fadeOut)      
       .then(this.pause)
-      // .then(() => this.setState({scale: 1}))
       .then(() => {
         if (this.state.counter < this.props.linesOfThisMantra.length) {
           this.setState({counter: this.state.counter + 1});
@@ -83,35 +77,45 @@ class Mantra extends React.Component {
     const { counter } = this.state;
     const { onStart } = this;
     console.log('counter is:', counter);
+    
     let lineToShow = linesOfThisMantra.find(line => line.sequence === counter);
       
-    if (!mantra || !linesOfThisMantra || !lineToShow) {
+    if (!mantra || !linesOfThisMantra) {
       return null;
     }
     return (
       <div className="container center-align">
         <div className="row">
           <div className="s12">
-            <h4><u>{mantra.name}</u></h4>
+            <h6 className="white-text padded">{mantra.name}</h6>
           </div>
         </div>
         <div className="row">
           <div className="s8 offset-s2 center-align">
-            <div className="card z-depth-2" >
+            <div className="card blue-grey darken-4 z-depth-3" >
               <div className="card-content" style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`}}>
-                <h1>{lineToShow.text}</h1>
+                <h1 className="white-text">{lineToShow ? lineToShow.text : null}</h1>
               </div>
       
             </div>
           </div>
         </div>
+        <div className="row">
+          <div className="s12">
+            <h6 className="white-text padded">{mantra.description}
+            <br />
+            {mantra.textlines ? mantra.textlines[0] : null}
+            </h6>
+          </div>
+        </div>
         <div>
-          <button onClick={onStart} disabled={this.state.startDisable === true}>Start</button>
+          <button className="btn waves-effect light-blue accent-4" onClick={onStart} disabled={this.state.startDisable === true}>Start</button>          
         </div>
         <p></p>
-        <div>
+
+        {/*<div>
           <img align="center" src={mantra.image} height={400} />
-        </div>
+        </div>*/}
        
       </div>
     )
@@ -119,8 +123,12 @@ class Mantra extends React.Component {
 }
 
 const mapStateToProps = ({ mantras, lines }, { id }) => {
+  if (!id) {
+    return null;
+  }
   const mantra = mantras.find(mantra => mantra.id === id);
   const linesOfThisMantra = lines.filter( line => line.mantraId === mantra.id);
+
   return {
     mantra,
     linesOfThisMantra

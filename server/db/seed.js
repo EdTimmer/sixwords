@@ -5,13 +5,21 @@ const Line = require('./Line');
 const mantras = [
   {
     id: 1,
-    name: `Tilopa's Six Words`,
-    image: '/images/Tilopa.jpg'
+    name: `Six Words`,
+    description: `Tilopa's words of advice`,
+    image: '/images/Tilopa.jpg',
   },
   {
     id: 2,
-    name: 'All Shall Be Well - by Julian of Norwich',
+    name: 'All Shall Be Well',
+    description: `by Julian of Norwich`,
     image: '/images/Julian.jpg'
+  },
+  {
+    id: 3,
+    name: 'Test',
+    description: 'Testing array',
+    textlines: ['one', 'two', 'three']
   }
 ];
 

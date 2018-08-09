@@ -1,22 +1,12 @@
-/* .card {
-  min-width: 10000px;
-} */
-/* .todo-item {
-  width: 600px;
-  height: 50px;
-  background-color: lightskyblue;
-  float: left;
-  border: solid 2px gold;
-  box-sizing: border-box;
-} */
-/* .nav-wrapper {
-  background: teal
-} */
-
-/* .card  {
-  background: rgb(37, 205, 247) 
-} */
-
 .container {
   width: 100%
+}
+
+body {
+  background-color: #455a64;
+  /* background-color: #7cb342; */
+}
+
+.padded {
+  padding: 25px;
 }
