@@ -29,7 +29,7 @@ class Mantra extends React.Component {
       }, 1000);
     });
     return promise;
- }  
+  }  
   
   fadeOut(res) {
     console.log('called fadeOut');
@@ -59,6 +59,8 @@ class Mantra extends React.Component {
   onStart(ev) {
     ev.preventDefault();
     this.setState({startDisable: true});
+    let audio = new Audio('/sounds/indianBell.wav');
+    audio.play()
     const playAll = () => {
       this.fadeIn()      
       .then(this.fadeOut)      
@@ -93,13 +95,16 @@ class Mantra extends React.Component {
             <h6 className="white-text padded">{mantra.name}</h6>
           </div>
         </div>
+        <p></p>
+        <p></p>
         <div className="row">
           <div className="s8 offset-s2 center-align">
-            <div className="card blue-grey darken-4 z-depth-3" >
-              <div className="card-content" style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`}}>                
+            {/*<div className="card teal darken-3 z-depth-3" >*/}
+            <div className="materialboxed">
+              <div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`}}>                
                 <h1 className="white-text">{mantra.lines ? mantra.lines[counter] : null}</h1>
+              {/*</div>*/}      
               </div>
-      
             </div>
           </div>
         </div>
@@ -109,7 +114,7 @@ class Mantra extends React.Component {
           </div>
         </div>
         <div>
-          <button className="btn waves-effect light-blue accent-4" onClick={onStart} disabled={this.state.startDisable === true}>Start</button>          
+          <button className="btn waves-effect green darken-4" onClick={onStart} disabled={this.state.startDisable === true}>Start</button>          
         </div>
       </div>
     );

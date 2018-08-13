@@ -5,7 +5,7 @@ const Nav = ({ mantras, mandalas }) => {
   return (
     <div>
       <nav>
-        <div className="nav-wrapper blue-grey darken-4">
+        <div className="nav-wrapper orange darken-4">
           <a href="#" className="brand-logo right">Six Words</a>
           <ul id="nav-mobile" className="left hide-on-med-and-down">
             <li><a href="" className="dropdown-button" data-activates="dropdown1" data-beloworigin="true">account<i className="material-icons right">arrow_drop_down</i></a></li>
