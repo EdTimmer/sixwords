@@ -1,11 +1,11 @@
 const conn = require('./conn');
 const User = require('./User');
 const Mantra = require('./Mantra');
-const Line = require('./Line');
+const Mandala = require('./Mandala');
 const seed = require('./seed');
 
-Line.belongsTo(Mantra, { onDelete: 'CASCADE' });
-Mantra.hasMany(Line);
+// Line.belongsTo(Mantra, { onDelete: 'CASCADE' });
+// Mantra.hasMany(Line);
 
 const syncAndSeed = () => {
   return conn.sync({ force: true })
@@ -20,6 +20,6 @@ module.exports = {
   models: {
     User,
     Mantra,
-    Line
+    Mandala
   }
 };

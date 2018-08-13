@@ -14,9 +14,9 @@ const Mantra = conn.define('mantra', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  textlines: {
+  lines: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
-    // allowNull: false
+    allowNull: true
   }
 });
 

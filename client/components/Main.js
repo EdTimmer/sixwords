@@ -2,14 +2,17 @@ import React from 'react';
 import { Switch, Route, HashRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getLines, getMantras } from '../store';
+import { getMantras, getMandalas } from '../store';
 
 import Nav from './Nav';
-import Nav2 from './Nav2';
+// import Nav2 from './Nav2';
+// import Nav3 from './Nav3'
+// import Nav4 from './Nav4';
 import Home from './Home';
 import Mantras from './Mantras';
 import Mantra from './Mantra';
 import MantraCreate from './MantraCreate';
+import MandalaCreate from './MandalaCreate';
 
 class Main extends React.Component {
   componentDidMount() {
@@ -24,7 +27,8 @@ class Main extends React.Component {
           {/*<Route render={({location}) => <Nav2 path={location.pathname} />} />*/}
             <div className="container-fluid">
               <Switch>
-                <Route exact path="/mantracreate" component={ MantraCreate } />
+                <Route path="/mantracreate" exact render={({history}) => <MantraCreate history={history} /> } />
+                <Route path="/mandalacreate" exact render={({history}) => <MandalaCreate history={history} /> } />
                 <Route path="/mantras/:id" exact render={({match, history}) => <Mantra id={ match.params.id * 1 } history={ history } /> } />
                 <Route path="/lines/:id" exact render={({match, history}) => <Line id={ match.params.id * 1 } history={ history } /> } />
                 <Route exact path="/mantras" component={ Mantras } />
@@ -44,7 +48,7 @@ const mapState = null;
 const mapDispatch = dispatch => ({
   fetch() {
     dispatch(getMantras());
-    dispatch(getLines());
+    dispatch(getMandalas());
   }
   // getUser(token) {
   //   dispatch(getUserFromToken(token));

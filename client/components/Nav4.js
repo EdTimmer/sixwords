@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Select from '@material-ui/core/Select';
 
-const Nav = ({ mantras, mandalas }) => {
+const Nav4 = ({ mantras, mandalas }) => {
   return (
     <div>
       <nav>
@@ -51,4 +52,4 @@ const mapStateToProps = ({ mantras, mandalas }) => {
   };
 };
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(Nav4);

@@ -1,81 +1,53 @@
 const User = require('./User');
 const Mantra = require('./Mantra');
-const Line = require('./Line');
+const Mandala = require('./Mandala');
+// const Line = require('./Line');
 
 const mantras = [
   {
-    id: 1,
+    // id: 1,
     name: `Six Words`,
     description: `Tilopa's words of advice`,
     image: '/images/Tilopa.jpg',
+    lines: [
+      `Don't think about the past`,
+      `Don't think about the future`,
+      `Don't think about the present`,
+      `Don't try to examine`,
+      `Don't try to control`,
+      `Relax right now and rest`
+    ]
   },
   {
-    id: 2,
+    // id: 2,
     name: 'All Shall Be Well',
     description: `by Julian of Norwich`,
-    image: '/images/Julian.jpg'
-  },
-  {
-    id: 3,
-    name: 'Test',
-    description: 'Testing array',
-    textlines: ['one', 'two', 'three']
+    image: '/images/Julian.jpg',
+    lines: [
+      `All shall be well`,
+      `And all shall be well`,
+      `And all manner of thing shall be well`
+    ]
   }
 ];
 
-const lines = [
+const mandalas = [
   {
-    text: `Don't think about the past`,
-    sequence: 1,
-    mantraId: 1
+    // id: 1,
+    name: 'Peace'
   },
   {
-    text: `Don't think about the future`,
-    sequence: 2,
-    mantraId: 1
-  },
-  {
-    text: `Don't think about the present`,
-    sequence: 3,
-    mantraId: 1
-  },
-  {
-    text: `Don't try to examine`,
-    sequence: 4,
-    mantraId: 1
-  },
-  {
-    text: `Don't try to control`,
-    sequence: 5,
-    mantraId: 1
-  },
-  {
-    text: `Relax right now and rest`,
-    sequence: 6,
-    mantraId: 1
-  },
-  {
-    text: `All shall be well`,
-    sequence: 1,
-    mantraId: 2
-  },
-  {
-    text: `And all shall be well`,
-    sequence: 2,
-    mantraId: 2
-  },
-  {
-    text: `And all manner of thing shall be well`,
-    sequence: 3,
-    mantraId: 2
-  },
-];
+    // id: 2,
+    name: 'Love'
+  }
+
+]
 
 const seed = () => {
   return Promise.all(mantras.map(mantra => Mantra.create(mantra)))
-  .then(() => {
-    return Promise.all(lines.map(line => Line.create(line)));
-  });
+    .then(() => {
+      return Promise.all(mandalas.map(mandala => Mandala.create(mandala)));
+    });
 };
 
 module.exports = seed;

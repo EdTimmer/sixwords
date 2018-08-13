@@ -6,6 +6,6 @@ const db = require('../db');
 
 // router.use('/users', require('./users'));
 router.use('/mantras', require('./mantras'));
-router.use('/lines', require('./lines'));
+router.use('/mandalas', require('./mandalas'));
 
 module.exports = router;

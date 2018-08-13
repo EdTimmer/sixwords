@@ -3,13 +3,16 @@ const db = require('../db');
 const { Mantra } = db.models;
 
 router.get('/', (req, res, next) => {
+  // console.log('get route for all mantras got called')
   Mantra.findAll()
     .then( mantras => res.send(mantras))
     .catch(next);
 });
 
 router.post('/', (req, res, next) => {
+  // console.log('req.body is:', req.body)
   Mantra.create(req.body)
+    // .then(() => console.log('mantra create route got called'))
     .then( mantra => res.send(mantra))
     .catch(next);
 });

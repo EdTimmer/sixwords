@@ -11,6 +11,7 @@ const addMantrasToStore = mantras => {
 };
 
 const createMantraInStore = mantra => {
+  // console.log('createMantraInStore got called')
   const action = { type: CREATE_MANTRA, mantra};
   return action;
 };
@@ -56,20 +57,31 @@ export const deleteMantra = (mantra, history) => (
   )
 );
 
-export const saveMantra = (mantra, history) => (
-  mantra.id ? (
-    dispatch => (
-      axios.put(`/v1/mantras/${mantra.id}`, mantra)
-        .then(result => result.data)
-        .then(mantra => dispatch(updateMantraInStore(mantra)))
-    )
-  ) : (
-    dispatch => (
-      axios.post(`/v1/mantras`, mantra)
-        .then(result => result.data)
-        .then(mantra => dispatch(createMantraInStore(mantra)))
-    )
-  )
-);
+// export const saveMantra = (mantra) => (  
+//   mantra.id ? (
+//     dispatch => (
+//       axios.put(`/v1/mantras/${mantra.id}`, mantra)
+//         .then(result => result.data)
+//         .then(mantra => dispatch(updateMantraInStore(mantra)))
+//     )
+//   ) : (
+//     dispatch => (
+//       // console.log('dispatch got called')
+//       axios.post('/v1/mantras', mantra)
+//         // .then(result => console.log('result in dispatch is:', result))
+//         .then(result => result.data)
+//         // .then(mantra => console.log('mantra in dispatch is:', mantra))
+//         .then(mantra => dispatch(createMantraInStore(mantra)))
+//     )
+//   )
+// );
+
+export const saveMantra = mantra => (
+  dispatch => (
+    axios.post('/v1/mantras', mantra)
+      .then(result => result.data)
+      .then(mantra => dispatch(createMantraInStore(mantra)))
+  ) 
+)
 
 export default reducer;
