@@ -76,11 +76,12 @@ export const deleteMantra = (mantra, history) => (
 //   )
 // );
 
-export const saveMantra = mantra => (
+export const saveMantra = (mantra, history) => (
   dispatch => (
     axios.post('/v1/mantras', mantra)
       .then(result => result.data)
       .then(mantra => dispatch(createMantraInStore(mantra)))
+      .then( () => history.push('/'))
   ) 
 )
 

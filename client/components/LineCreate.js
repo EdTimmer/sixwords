@@ -4,10 +4,11 @@ const LineCreate = ({onChange, onAddLine, line}) => {
   return (
     <div>
       <div>
-        <input name="line" onChange={onChange} placeholder="line" />
+        <p><input name="line" onChange={onChange} placeholder="line" />
+        <button className="btn" value={ line } onClick={onAddLine}>Add Line</button></p>
       </div>
       <div>
-        <button className="btn" value={ line } onClick={onAddLine}>Add Line</button>
+        
       </div>
     </div>
   );

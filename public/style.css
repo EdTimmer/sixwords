@@ -12,3 +12,7 @@ body {
 .padded {
   padding: 25px;
 }
+
+.extrapadded {
+  margin: 300px, 25px, 80px, 25px;
+}

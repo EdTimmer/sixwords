@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const Home = () => {
   return (
     <div className="container center-align">
-      <p></p>
+      <h5 className="white-text">"Better than a thousand hollow words, is one word that brings peace."<br />-Gautama Buddha</h5>
       <p></p>
       <img src="/images/Kangchenjunga.jpg" />
     </div>

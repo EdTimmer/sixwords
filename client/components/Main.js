@@ -11,6 +11,7 @@ import Nav from './Nav';
 import Home from './Home';
 import Mantras from './Mantras';
 import Mantra from './Mantra';
+import Mandala from './Mandala';
 import MantraCreate from './MantraCreate';
 import MandalaCreate from './MandalaCreate';
 
@@ -30,6 +31,7 @@ class Main extends React.Component {
                 <Route path="/mantracreate" exact render={({history}) => <MantraCreate history={history} /> } />
                 <Route path="/mandalacreate" exact render={({history}) => <MandalaCreate history={history} /> } />
                 <Route path="/mantras/:id" exact render={({match, history}) => <Mantra id={ match.params.id * 1 } history={ history } /> } />
+                <Route path="/mandalas/:id" exact render={({match, history}) => <Mandala id={ match.params.id * 1 } history={ history } /> } />
                 <Route path="/lines/:id" exact render={({match, history}) => <Line id={ match.params.id * 1 } history={ history } /> } />
                 <Route exact path="/mantras" component={ Mantras } />
                 {/*<Route exact path="/lines" component={ Lines } />*/}

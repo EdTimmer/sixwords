@@ -11,7 +11,8 @@ class MantraCreate extends Component {
       description: '',
       line: '',
       lines: [],
-      showLineCreate: true
+      showLineCreate: true,
+      showNewLineBtn: false
       // userId: this.props.userId
     };
     this.onChange = this.onChange.bind(this);
@@ -24,7 +25,7 @@ class MantraCreate extends Component {
   }
   onAddLine(ev){
     ev.preventDefault();
-    this.setState({ lines: [...this.state.lines, this.state.line], showLineCreate: false});
+    this.setState({ lines: [...this.state.lines, this.state.line], showLineCreate: false, showNewLineBtn: true});
   }
   onSave(ev) {
     ev.preventDefault();
@@ -33,10 +34,10 @@ class MantraCreate extends Component {
   }
   onNewLine(ev) {
     ev.preventDefault();
-    this.setState({ showLineCreate: true });
+    this.setState({ showLineCreate: true, showNewLineBtn: false });
   }
   render() {
-    const { line } = this.state;
+    const { line, showNewLineBtn } = this.state;
     const { onChange, onAddLine, onSave, onNewLine } = this;
     return (
       <div>
@@ -44,11 +45,11 @@ class MantraCreate extends Component {
           <h3>New Mantra</h3>
           <form onSubmit={ onSave }>
 
-            <div>
+            <div className="padded">
               <input name="name" onChange={onChange} placeholder="Mantra Name" />
             </div>
 
-            <div>
+            <div className="padded">
               <input name="description" onChange={onChange} placeholder="description" />
             </div>
 
@@ -63,19 +64,24 @@ class MantraCreate extends Component {
               })
             }
           </div>
-          <br />
+          
           <div className="white-text padded">
             {
               this.state.showLineCreate ? (<LineCreate onChange={this.onChange} onAddLine={this.onAddLine} line={this.state.line} />) : null
             }
           </div>
-          <br />
 
-          <div>
-            <button className="btn" onClick={onNewLine}>New Line</button>
+          <div className="padded">
+            {
+              showNewLineBtn ? (<button className="btn" onClick={onNewLine}>New Line</button>) : (null)
+            }
+            
+          </div>
+          <div className="padded">
+            <button className="btn" type="submit"> Make Mantra </button>
           </div>
 
-            <button type="submit"> Make Mantra </button>
+            
           </form>
         </div>
       </div>
@@ -93,7 +99,7 @@ class MantraCreate extends Component {
 
 const mapDispatch = (dispatch, { history }) => {
   return {
-    saveMantra: (mantraInfo) => dispatch(saveMantra(mantraInfo))
+    saveMantra: (mantraInfo) => dispatch(saveMantra(mantraInfo, history))
   };
 };
 

@@ -1,16 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Select from '@material-ui/core/Select';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
 
 const Nav4 = ({ mantras, mandalas }) => {
   return (
     <div>
+
+
+
       <nav>
         <div className="nav-wrapper blue-grey darken-4">
           <a href="#" className="brand-logo right">Six Words</a>
           <ul id="nav-mobile" className="left hide-on-med-and-down">
             <li><a href="" className="dropdown-button" data-activates="dropdown1" data-beloworigin="true">account<i className="material-icons right">arrow_drop_down</i></a></li>
-              <ul id="dropdown1" className="dropdown-content">
+              <ul id="dropdown1" className="dropdown-content"> 
                 <li><a href="/#/mantracreate">create mantra</a></li>
                 <li><a href="/#/mandalacreate">create mandala</a></li>
               </ul>
@@ -51,5 +58,6 @@ const mapStateToProps = ({ mantras, mandalas }) => {
     mandalas
   };
 };
+
 
 export default connect(mapStateToProps)(Nav4);

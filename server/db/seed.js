@@ -7,7 +7,7 @@ const mantras = [
   {
     // id: 1,
     name: `Six Words`,
-    description: `Tilopa's words of advice`,
+    description: `Tilopa's advice`,
     image: '/images/Tilopa.jpg',
     lines: [
       `Don't think about the past`,
@@ -34,11 +34,13 @@ const mantras = [
 const mandalas = [
   {
     // id: 1,
-    name: 'Peace'
+    name: 'Sri Yantra',
+    imageURL: '/images/Sri_Yantra.gif',
   },
   {
     // id: 2,
-    name: 'Love'
+    name: 'Shiva Shakti',
+    imageURL: '/images/SivaSakti.jpg',
   }
 
 ]

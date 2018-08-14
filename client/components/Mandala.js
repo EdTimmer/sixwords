@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class Mantra extends React.Component {
+class Mandala extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       counter: 0,
-      startDisable: false,
-      opacity: 0,
+      // startDisable: false,
+      opacity: 1,
       scale: 1
     }
     this.onStart = this.onStart.bind(this);
@@ -80,46 +80,29 @@ class Mantra extends React.Component {
   }
 
   render() {
-    const { mantra } = this.props;
-    const { counter, startDisable } = this.state;
+    const { mandala } = this.props;
+    const { counter } = this.state;
     const { onStart } = this;
     console.log('counter is:', counter);
     
-    if (!mantra ) {
+    if (!mandala ) {
       return null;
     }
     return (
       <div className="container center-align">
         <div className="row">
           <div className="s12 extrapadded">
-            {
-              startDisable ? (null) : (<h5 className="white-text padded">{mantra.name}</h5>)
-            }
-            {/*<h6 className="white-text padded">{mantra.name}</h6>*/}
+            <h5 className="white-text padded">{mandala.name}</h5>
           </div>
         </div>
        
         <div className="row">
-          <div className="s12">
-            {
-              startDisable ? (null) : (<h5 className="white-text padded">{mantra.description}</h5>)
-            }
-            
-          </div>
-        </div>
-        <div>
-            {
-              startDisable ? (null) : (<button className="btn waves-effect green darken-4" onClick={onStart} disabled={startDisable === true}>Start</button>)
-            }
-                    
-        </div>
-        <div className="row">
           <div>
             <div>
-              <div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`}}> 
+              {/*<div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`}}>*/} 
               <p><br /></p>               
-                <h1 className="white-text">{mantra.lines ? mantra.lines[counter] : null}</h1>       
-              </div>
+                <img src={mandala.imageURL} width={500}/>       
+              {/*</div>*/}
             </div>
           </div>
         </div>
@@ -128,14 +111,15 @@ class Mantra extends React.Component {
   }
 }
 
-const mapStateToProps = ({ mantras }, { id }) => {
+const mapStateToProps = ({ mandalas }, { id }) => {
   if (!id) {
     return null;
   }
-  const mantra = mantras.find(mantra => mantra.id === id);
+  const mandala = mandalas.find(mandala => mandala.id === id);
+  // console.log('mandala is:', mandala)
   return {
-    mantra
+    mandala
   };
 };
 
-export default connect(mapStateToProps)(Mantra);
+export default connect(mapStateToProps)(Mandala);
