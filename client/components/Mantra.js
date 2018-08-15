@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Grid } from '@material-ui/core';
 
 class Mantra extends React.Component {
   constructor(props) {
@@ -89,7 +90,8 @@ class Mantra extends React.Component {
       return null;
     }
     return (
-      <div className="container center-align">
+      <Grid container spacing={24}>
+        <Grid item xs={12}>
         <div className="row">
           <div className="s12 extrapadded">
             {
@@ -98,7 +100,8 @@ class Mantra extends React.Component {
             {/*<h6 className="white-text padded">{mantra.name}</h6>*/}
           </div>
         </div>
-       
+        </Grid>
+        <Grid item xs={12}>
         <div className="row">
           <div className="s12">
             {
@@ -107,12 +110,16 @@ class Mantra extends React.Component {
             
           </div>
         </div>
+        </Grid>
+        <Grid item xs={12}>
         <div>
             {
               startDisable ? (null) : (<button className="btn waves-effect green darken-4" onClick={onStart} disabled={startDisable === true}>Start</button>)
             }
                     
         </div>
+        </Grid>
+        <Grid item xs={12}>
         <div className="row">
           <div>
             <div>
@@ -122,8 +129,10 @@ class Mantra extends React.Component {
               </div>
             </div>
           </div>
+          
         </div>
-      </div>
+        </Grid>
+      </Grid>
     );
   }
 }

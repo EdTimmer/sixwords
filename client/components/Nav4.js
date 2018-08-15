@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { connect } from 'react-redux';
-import Select from '@material-ui/core/Select';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+// import Toolbar from '@material-ui/core/Toolbar';
 
 const Nav4 = ({ mantras, mandalas }) => {
   return (
+    <Fragment>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="headline" color="inherit">
+          Six Words
+        </Typography>
+      </Toolbar>
+    </AppBar>
+    
     <div>
-
-
-
       <nav>
         <div className="nav-wrapper blue-grey darken-4">
           <a href="#" className="brand-logo right">Six Words</a>
@@ -49,6 +52,7 @@ const Nav4 = ({ mantras, mandalas }) => {
         </div>
       </nav>
     </div>
+    </Fragment>
   );
 };
 

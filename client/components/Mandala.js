@@ -101,7 +101,7 @@ class Mandala extends React.Component {
             <div>
               {/*<div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`}}>*/} 
               <p><br /></p>               
-                <img src={mandala.imageURL} width={500}/>       
+                <img src={mandala.imageURL} width={500} />
               {/*</div>*/}
             </div>
           </div>
