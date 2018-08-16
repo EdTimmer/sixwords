@@ -1,20 +1,41 @@
 import React, {Fragment} from 'react';
 import { connect } from 'react-redux';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
-// import Toolbar from '@material-ui/core/Toolbar';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import { AppBar, Toolbar, Typography, Button, IconButton, MenuIcon } from '@material-ui/core';
 
-const Nav4 = ({ mantras, mandalas }) => {
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  flex: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
+
+const Nav4 = (props) => {  //({ mantras, mandalas })
+  const { classes } = props;
   return (
     <Fragment>
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="headline" color="inherit">
-          Six Words
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="title" color="inherit" className={classes.flex}>
+            News
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </div>
     
-    <div>
+    {/*<div>
       <nav>
         <div className="nav-wrapper blue-grey darken-4">
           <a href="#" className="brand-logo right">Six Words</a>
@@ -51,9 +72,13 @@ const Nav4 = ({ mantras, mandalas }) => {
           </ul>
         </div>
       </nav>
-    </div>
+            </div>*/}
     </Fragment>
   );
+};
+
+Nav4.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ mantras, mandalas }) => {
@@ -64,4 +89,4 @@ const mapStateToProps = ({ mantras, mandalas }) => {
 };
 
 
-export default connect(mapStateToProps)(Nav4);
+export default connect(mapStateToProps)(withStyles(styles)(Nav4));

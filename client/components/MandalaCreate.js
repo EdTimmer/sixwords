@@ -49,7 +49,7 @@ class MandalaCreate extends Component {
               <input name="name" onChange={onChange} placeholder="Mandala Name" />
             </div>
             <div>
-              <label htmlFor='imageURL'>New Photo: </label><br />
+              <label htmlFor='imageURL'>New Image: </label><br />
               <input type="file" name='imageURL' onChange={previewFile} />
               <img src="/images/Preview-icon.png" alt="Image preview..." width={100} /> 
             </div>

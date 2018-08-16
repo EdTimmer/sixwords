@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
+// import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 class Mantra extends React.Component {
   constructor(props) {
@@ -89,48 +91,34 @@ class Mantra extends React.Component {
     if (!mantra ) {
       return null;
     }
+
+   
     return (
       <Grid container spacing={24}>
-        <Grid item xs={12}>
-        <div className="row">
-          <div className="s12 extrapadded">
-            {
-              startDisable ? (null) : (<h5 className="white-text padded">{mantra.name}</h5>)
-            }
-            {/*<h6 className="white-text padded">{mantra.name}</h6>*/}
-          </div>
-        </div>
+        <Grid item xs={12} style={{textAlign: 'center'}}>
+          <Paper elevation={1} style={{backgroundColor: 'black', color: 'white'}}>
+ 
+              {
+                startDisable ? (null) : (<h3 className="white-text padded">{mantra.name}</h3>)
+              }
+
+              {
+                startDisable ? (null) : (<h3 className="white-text padded">{mantra.description}</h3>)
+              }            
+          </Paper>       
+        </Grid>       
+        <Grid item xs={12} style={{textAlign: 'center'}}>
+          {
+            startDisable ? (null) : (<button className="btn waves-effect green darken-4" onClick={onStart} disabled={startDisable === true}>Start</button>)
+          }                    
         </Grid>
-        <Grid item xs={12}>
-        <div className="row">
-          <div className="s12">
-            {
-              startDisable ? (null) : (<h5 className="white-text padded">{mantra.description}</h5>)
-            }
-            
-          </div>
-        </div>
-        </Grid>
-        <Grid item xs={12}>
-        <div>
-            {
-              startDisable ? (null) : (<button className="btn waves-effect green darken-4" onClick={onStart} disabled={startDisable === true}>Start</button>)
-            }
-                    
-        </div>
-        </Grid>
-        <Grid item xs={12}>
-        <div className="row">
-          <div>
-            <div>
-              <div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`}}> 
-              <p><br /></p>               
+        <Grid item xs={12} style={{textAlign: 'center'}}>
+
+              <div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`, marginTop: 150}}>
+                             
                 <h1 className="white-text">{mantra.lines ? mantra.lines[counter] : null}</h1>       
               </div>
-            </div>
-          </div>
-          
-        </div>
+
         </Grid>
       </Grid>
     );
