@@ -21,7 +21,7 @@ const styles = {
     marginRight: 20,
   },
   list: {
-    width: 250
+    width: 200
   },
   fullList: {
     width: 'auto'
@@ -29,30 +29,16 @@ const styles = {
 };
 
 class Nav5 extends React.Component {
-  state = {
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  };
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     left: false
-  //   }
-  //   // this.toggleDrawer = this.toggleDrawer.bind(this);
-  // }
-  
-  
-  // toggleDrawer(side, open) {
-  //   this.setState({
-  //     [side]: open
-  //   })
-  // }
-  toggleDrawer = (side, open) => () => {
-    this.setState({
-      [side]: open,
-    });
+  constructor(props) {
+    super();
+    this.state = {
+      left: false,
+    };
+    this.toggleDrawer = this.toggleDrawer.bind(this);
+  }
+
+  toggleDrawer() {
+    this.setState({ left: !this.state.left });
   }
   render() {
     const { classes } = this.props;
@@ -61,13 +47,36 @@ class Nav5 extends React.Component {
       <div className={classes.list}>
         <List>
           <ListItemText>
-            one
+            Login/Logout          
           </ListItemText>
         </List>
         <Divider />
         <List>
           <ListItemText>
-            two
+            <a href="/">home</a>          
+          </ListItemText>
+        </List>
+        <Divider />
+        <List>
+          <ListItemText>
+            <a href="/#/mantracreate">create mantra</a>          
+          </ListItemText>
+        </List>
+        <Divider />
+        <List>
+          <ListItemText>
+            <a href="/#/mandalacreate">create mandala</a>
+          </ListItemText>
+        </List>
+        <List>
+          <ListItemText>
+            <a href="/#/mantras">mantras</a>          
+          </ListItemText>
+        </List>
+        <Divider />
+        <List>
+          <ListItemText>
+            <a href="/#/mandalas">mandalas</a>          
           </ListItemText>
         </List>
       </div>
@@ -75,22 +84,21 @@ class Nav5 extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" style={{backgroundColor: "#E65100"}}>
           <Toolbar>
-            <IconButton  className={classes.menuButton} color="inherit" aria-label="Menu"> 
-            {/* onClick={this.toggleDrawer('left', true)} */}
+            <IconButton onClick={this.toggleDrawer} className={classes.menuButton} color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>
-            <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
+            <Drawer open={this.state.left} onClose={this.toggleDrawer}>
               <div
                 tabIndex={0}
                 role="button"
-                onClick={this.toggleDrawer('left', false)}
-                onKeyDown={this.toggleDrawer('left', false)}
+                onClick={this.toggleDrawer}
+                onKeyDown={this.toggleDrawer}
               >
                 {sideList}
               </div>
-    </Drawer>
+            </Drawer>
             <Typography variant="title" color="inherit" className={classes.flex}>
               Six Words
             </Typography>
@@ -101,26 +109,6 @@ class Nav5 extends React.Component {
     );
   }
 }
-
-
-// (props) {
-//   const { classes } = props;
-//   return (
-//     <div className={classes.root}>
-//       <AppBar position="static">
-//         <Toolbar>
-//           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-//             <MenuIcon />
-//           </IconButton>
-//           <Typography variant="title" color="inherit" className={classes.flex}>
-//             Six Words
-//           </Typography>
-//           <Button color="inherit">Login</Button>
-//         </Toolbar>
-//       </AppBar>
-//     </div>
-//   );
-// }
 
 Nav5.propTypes = {
   classes: PropTypes.object.isRequired,
