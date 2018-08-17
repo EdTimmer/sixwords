@@ -53,28 +53,18 @@ export const deleteMantra = (mantra, history) => (
   dispatch => (
     axios.delete(`/v1/mantras/${mantra.id}`)
       .then( () => dispatch(deleteMantraInStore(mantra)))
-      .then( () => history.push('/v1/home'))
+      .then( () => history.push('/mantras'))
   )
 );
 
-// export const saveMantra = (mantra) => (  
-//   mantra.id ? (
-//     dispatch => (
-//       axios.put(`/v1/mantras/${mantra.id}`, mantra)
-//         .then(result => result.data)
-//         .then(mantra => dispatch(updateMantraInStore(mantra)))
-//     )
-//   ) : (
-//     dispatch => (
-//       // console.log('dispatch got called')
-//       axios.post('/v1/mantras', mantra)
-//         // .then(result => console.log('result in dispatch is:', result))
-//         .then(result => result.data)
-//         // .then(mantra => console.log('mantra in dispatch is:', mantra))
-//         .then(mantra => dispatch(createMantraInStore(mantra)))
-//     )
-//   )
-// );
+export const updateMantra = (mantra, history) => (
+    dispatch => (
+      axios.put(`/v1/mantras/${mantra.id}`, mantra)
+        .then(result => result.data)
+        .then(mantra => dispatch(updateMantraInStore(mantra)))
+        .then( () => history.push('/mantras'))
+    )
+);
 
 export const saveMantra = (mantra, history) => (
   dispatch => (
@@ -82,7 +72,7 @@ export const saveMantra = (mantra, history) => (
       .then(result => result.data)
       .then(mantra => dispatch(createMantraInStore(mantra)))
       .then( () => history.push('/mantras'))
-  ) 
-)
+  )
+);
 
 export default reducer;

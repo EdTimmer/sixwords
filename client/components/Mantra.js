@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Paper, Switch, FormGroup, FormControlLabel } from '@material-ui/core';
-// import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import { Grid, Paper, Switch, FormControlLabel } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 class Mantra extends React.Component {
   constructor(props) {
@@ -93,7 +92,7 @@ class Mantra extends React.Component {
   }
 
   render() {
-    const { mantra } = this.props;
+    const { mantra, id } = this.props;
     const { counter, startDisable } = this.state;
     const { onStart, soundToggle } = this;
     console.log('counter is:', counter);
@@ -140,8 +139,16 @@ class Mantra extends React.Component {
             />
             )
           }    
+          </div>                       
+        </Grid>
+        <Grid item xs={12} />
+        <Grid item xs={12} />
+        <Grid>
+          <div>
+            {
+              startDisable ? (null) : (<Link to={`/mantras/${id}/edit`}><button className="btn waves-effect green darken-4">Edit</button></Link>)
+            }
           </div>
-                       
         </Grid>
         <Grid item xs={12} style={{textAlign: 'center'}}>
 
@@ -162,7 +169,8 @@ const mapStateToProps = ({ mantras }, { id }) => {
   }
   const mantra = mantras.find(mantra => mantra.id === id);
   return {
-    mantra
+    mantra,
+    id
   };
 };
 
