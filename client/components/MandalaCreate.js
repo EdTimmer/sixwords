@@ -42,7 +42,7 @@ class MandalaCreate extends Component {
   render() {
     const { onChange, onSave, previewFile } = this;
     return (
-      <Fragment style={{flexGrow: 1}}>
+      <div style={{flexGrow: 1}}>
         <Grid container spacing={24}> 
           <Grid item xs={12}>            
             <h4 className="padded" style={{color: "white", textAlign: "center"}}>New Mandala</h4>
@@ -72,14 +72,14 @@ class MandalaCreate extends Component {
             </Paper>
           </Grid>
         </Grid>
-      </Fragment>
+      </div>
     )
   }
 }
 
 const mapDispatch = (dispatch, { history }) => {
   return {
-    saveMandala: (mandalaInfo) => dispatch(saveMandala(mandalaInfo))
+    saveMandala: (mandalaInfo) => dispatch(saveMandala(mandalaInfo, history))
   };
 };
 

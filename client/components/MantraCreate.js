@@ -41,7 +41,7 @@ class MantraCreate extends Component {
     const { line, showNewLineBtn } = this.state;
     const { onChange, onAddLine, onSave, onNewLine } = this;
     return (
-      <Fragment style={{flexGrow: 1}}>
+      <div style={{flexGrow: 1}}>
         <Grid container spacing={24}>
           <Grid item xs={12}>            
             <h4 style={{color: "white", textAlign: "center"}}>New Mantra</h4>
@@ -91,7 +91,7 @@ class MantraCreate extends Component {
           </Grid> 
  
         </Grid>
-      </Fragment>
+      </div>
     )
   }
 }

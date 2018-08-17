@@ -53,7 +53,7 @@ export const deleteMandala = (mandala, history) => (
   dispatch => (
     axios.delete(`/v1/mandalas/${mandala.id}`)
       .then( () => dispatch(deleteMandalaInStore(mandala)))
-      .then( () => history.push('/v1/home'))
+      .then( () => history.push('/mandalas'))
   )
 );
 
@@ -76,12 +76,12 @@ export const deleteMandala = (mandala, history) => (
 //   )
 // );
 
-export const saveMandala = mandala => (
+export const saveMandala = (mandala, history) => (
   dispatch => (
     axios.post('/v1/mandalas', mandala)
       .then(result => result.data)
       .then(mandala => dispatch(createMandalaInStore(mandala)))
-      .then(err => console.log(err.response))
+      .then(() => history.push('./mandalas'))
   ) 
 )
 

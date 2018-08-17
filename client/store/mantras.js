@@ -81,7 +81,7 @@ export const saveMantra = (mantra, history) => (
     axios.post('/v1/mantras', mantra)
       .then(result => result.data)
       .then(mantra => dispatch(createMantraInStore(mantra)))
-      .then( () => history.push('/'))
+      .then( () => history.push('/mantras'))
   ) 
 )
 
