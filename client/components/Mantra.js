@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid, Paper, Switch, FormGroup, FormControlLabel } from '@material-ui/core';
 // import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
@@ -11,12 +11,14 @@ class Mantra extends React.Component {
       counter: 0,
       startDisable: false,
       opacity: 0,
-      scale: 1
+      scale: 1,
+      soundOn: true
     }
     this.onStart = this.onStart.bind(this);
     this.fadeIn = this.fadeIn.bind(this);
     this.fadeOut = this.fadeOut.bind(this);
     this.pause = this.pause.bind(this);
+    this.soundToggle = this.soundToggle.bind(this);
   }
 
   fadeIn() {
@@ -59,11 +61,19 @@ class Mantra extends React.Component {
       return promise;
   }
 
+  soundToggle(ev) {
+    ev.preventDefault();
+    this.setState({soundOn: !this.state.soundOn})
+  }
+
   onStart(ev) {
     ev.preventDefault();
     this.setState({startDisable: true});
     let audio = new Audio('/sounds/indianBell.wav');
-    audio.play()
+    if (this.state.soundOn) {
+      audio.play();
+    }
+    // audio.play();
     const playAll = () => {
       this.fadeIn()      
       .then(this.fadeOut)      
@@ -85,7 +95,7 @@ class Mantra extends React.Component {
   render() {
     const { mantra } = this.props;
     const { counter, startDisable } = this.state;
-    const { onStart } = this;
+    const { onStart, soundToggle } = this;
     console.log('counter is:', counter);
     
     if (!mantra ) {
@@ -108,9 +118,30 @@ class Mantra extends React.Component {
           </Paper>       
         </Grid>       
         <Grid item xs={12} style={{textAlign: 'center'}}>
+          <div>
           {
             startDisable ? (null) : (<button className="btn waves-effect green darken-4" onClick={onStart} disabled={startDisable === true}>Start</button>)
-          }                    
+          }
+          </div>
+          <br />
+          <div> 
+          {
+            startDisable ? (null) : (
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={this.state.soundOn}
+                    onChange={this.soundToggle}
+                    value="soundOn"
+                    color="primary"
+                  />
+                }
+                label={<span style={{ color: 'white' }}>Sound</span>}
+            />
+            )
+          }    
+          </div>
+                       
         </Grid>
         <Grid item xs={12} style={{textAlign: 'center'}}>
 

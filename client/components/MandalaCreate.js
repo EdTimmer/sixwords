@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { saveMandala } from '../store/mandalas';
+import { Button, Grid, Paper } from '@material-ui/core';
 
 class MandalaCreate extends Component {
   constructor(props) {
@@ -41,22 +42,37 @@ class MandalaCreate extends Component {
   render() {
     const { onChange, onSave, previewFile } = this;
     return (
-      <div>
-        <div className="padded">
-          <h3>New Mandala</h3>
-          <form onSubmit={ onSave }>
-            <div>
-              <input name="name" onChange={onChange} placeholder="Mandala Name" />
-            </div>
-            <div>
-              <label htmlFor='imageURL'>New Image: </label><br />
-              <input type="file" name='imageURL' onChange={previewFile} />
-              <img src="/images/Preview-icon.png" alt="Image preview..." width={100} /> 
-            </div>
-            <button className="btn waves-effect green darken-4" type="submit"> Make Mandala </button>
-          </form>
-        </div>
-      </div>
+      <Fragment style={{flexGrow: 1}}>
+        <Grid container spacing={24}> 
+          <Grid item xs={12}>            
+            <h4 className="padded" style={{color: "white", textAlign: "center"}}>New Mandala</h4>
+          </Grid> 
+          <Grid item xs={1}>
+            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
+            </Paper>
+          </Grid> 
+          <Grid item xs={5}>            
+            <form onSubmit={ onSave }>
+              <div>
+                <input name="name" onChange={onChange} placeholder="Mandala Name" />
+              </div>
+              <div className="padded">
+                <label htmlFor='imageURL'>New Image: </label><br />
+                <input type="file" name='imageURL' onChange={previewFile} />
+                <img src="/images/Preview-icon.png" alt="Image preview..." width={100} /> 
+              </div>
+              <div className="padded" style={{textAlign: "center"}}>
+                <button className="btn waves-effect" type="submit"> Save Mandala </button>
+              </div>
+            </form>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
+              <img src="/images/SnowFlake.jpg" width={400} />
+            </Paper>
+          </Grid>
+        </Grid>
+      </Fragment>
     )
   }
 }

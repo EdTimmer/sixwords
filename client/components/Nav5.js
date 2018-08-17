@@ -7,6 +7,8 @@ import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, List, ListItem
 // import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import Menu from '@material-ui/icons/Menu';
 // import { StringDecoder } from 'string_decoder';
 
 const styles = {
@@ -21,7 +23,8 @@ const styles = {
     marginRight: 20,
   },
   list: {
-    width: 200
+    width: 200,
+    marginLeft: 20
   },
   fullList: {
     width: 'auto'
@@ -56,13 +59,13 @@ class Nav5 extends React.Component {
             <a href="/">home</a>          
           </ListItemText>
         </List>
-        <Divider />
+        
         <List>
           <ListItemText>
             <a href="/#/mantracreate">create mantra</a>          
           </ListItemText>
         </List>
-        <Divider />
+        
         <List>
           <ListItemText>
             <a href="/#/mandalacreate">create mandala</a>
@@ -73,7 +76,7 @@ class Nav5 extends React.Component {
             <a href="/#/mantras">mantras</a>          
           </ListItemText>
         </List>
-        <Divider />
+        
         <List>
           <ListItemText>
             <a href="/#/mandalas">mandalas</a>          
@@ -81,13 +84,14 @@ class Nav5 extends React.Component {
         </List>
       </div>
     )
+    // backgroundColor: "#E65100"
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" style={{backgroundColor: "#E65100"}}>
+        <AppBar position="static" style={{backgroundColor: "#FF5722"}}>
           <Toolbar>
-            <IconButton onClick={this.toggleDrawer} className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
+            <IconButton onClick={this.toggleDrawer} className={classes.menuButton} color="inherit" aria-label="Menu" style={{backgroundColor: "#FF5722"}}>
+              <Menu />
             </IconButton>
             <Drawer open={this.state.left} onClose={this.toggleDrawer}>
               <div
@@ -100,9 +104,9 @@ class Nav5 extends React.Component {
               </div>
             </Drawer>
             <Typography variant="title" color="inherit" className={classes.flex}>
-              Six Words
+              
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button><a href="/" style={{color: "white"}}>Six Words</a></Button>
           </Toolbar>
         </AppBar>
       </div>

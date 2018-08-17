@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { saveMantra } from '../store/mantras';
 import LineCreate from './LineCreate';
+import { Button, Grid, Paper } from '@material-ui/core';
 
 class MantraCreate extends Component {
   constructor(props) {
@@ -40,51 +41,57 @@ class MantraCreate extends Component {
     const { line, showNewLineBtn } = this.state;
     const { onChange, onAddLine, onSave, onNewLine } = this;
     return (
-      <div>
-        <div>
-          <h3>New Mantra</h3>
-          <form onSubmit={ onSave }>
-
-            <div className="padded">
-              <input name="name" onChange={onChange} placeholder="Mantra Name" />
-            </div>
-
-            <div className="padded">
-              <input name="description" onChange={onChange} placeholder="description" />
-            </div>
-
-            <div>
-            {
-              this.state.lines.map(line => {
-                return (
-                  <div key={this.state.lines.indexOf(line)}>  
-                    <div className="white-text">{line.toString()}</div>
-                  </div>
-                )
-              })
-            }
-          </div>
-          
-          <div className="white-text padded">
-            {
-              this.state.showLineCreate ? (<LineCreate onChange={this.onChange} onAddLine={this.onAddLine} line={this.state.line} />) : null
-            }
-          </div>
-
-          <div className="padded">
-            {
-              showNewLineBtn ? (<button className="btn" onClick={onNewLine}>New Line</button>) : (null)
-            }
-            
-          </div>
-          <div className="padded">
-            <button className="btn" type="submit"> Make Mantra </button>
-          </div>
-
-            
-          </form>
-        </div>
-      </div>
+      <Fragment style={{flexGrow: 1}}>
+        <Grid container spacing={24}>
+          <Grid item xs={12}>            
+            <h4 style={{color: "white", textAlign: "center"}}>New Mantra</h4>
+          </Grid>  
+          <Grid item xs={4}>
+            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
+              <img src="/images/text.jpg" width={450} />
+            </Paper>
+          </Grid> 
+          <Grid item xs={6}>            
+            <form onSubmit={ onSave }>
+              <div className="padded">
+                <input name="name" onChange={onChange} placeholder="Mantra Name" />
+              </div>
+              <div className="padded">
+                <input name="description" onChange={onChange} placeholder="description" />
+              </div>
+              <div>
+                {
+                  this.state.lines.map(line => {
+                    return (
+                      <div key={this.state.lines.indexOf(line)}>  
+                        <h5 className="white-text padded">{line.toString()}</h5>
+                      </div>
+                    )
+                  })
+                }
+              </div>          
+              <div className="white-text padded">
+                {
+                  this.state.showLineCreate ? (<LineCreate onChange={this.onChange} onAddLine={this.onAddLine} line={this.state.line} />) : null
+                }
+              </div>
+              <div className="padded">
+                {
+                  showNewLineBtn ? (<button className="btn" onClick={onNewLine}>New Line</button>) : (null)
+                }                
+              </div>
+              <div className="padded" style={{textAlign: "center"}}>
+                <button className="btn" type="submit"> Save Mantra </button>
+              </div>            
+            </form>
+          </Grid>  
+          <Grid item xs={2}>
+            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
+            </Paper>
+          </Grid> 
+ 
+        </Grid>
+      </Fragment>
     )
   }
 }
