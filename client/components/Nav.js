@@ -1,54 +1,122 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, List, ListItemText, Divider, ListItem } from '@material-ui/core';
+// import Toolbar from '@material-ui/core/Toolbar';
+// import Typography from '@material-ui/core/Typography';
+// import Button from '@material-ui/core/Button';
+// import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
-const Nav = ({ mantras, mandalas }) => {
-  return (
-    <div>
-      <nav>
-        <div className="nav-wrapper orange darken-4">
-          <a href="#" className="brand-logo right">Six Words</a>
-          <ul id="nav-mobile" className="left hide-on-med-and-down">
-            <li><a href="" className="dropdown-button" data-activates="dropdown1" data-beloworigin="true">account<i className="material-icons right">arrow_drop_down</i></a></li>
-              <ul id="dropdown1" className="dropdown-content">
-                <li><a href="/#/mantracreate">create mantra</a></li>
-                <li><a href="/#/mandalacreate">create mandala</a></li>
-              </ul>
-            <li><a href="" className="dropdown-button" data-activates="dropdown2" data-constrainwidth="false" data-beloworigin="true">mantras<i className="material-icons right">arrow_drop_down</i></a></li>
-              <ul id="dropdown2" className="dropdown-content">
-              {
-                mantras.map(mantra => {
-                  return (
-                    <li key={mantra.id}>
-                      <a href={`/#/mantras/${mantra.id}`}>{mantra.name}</a>
-                    </li>
-                  );
-                })
-              }
-              </ul>
-            <li><a href="" className="dropdown-button" data-activates="dropdown3" data-constrainwidth="false" data-beloworigin="true">mandalas<i className="material-icons right">arrow_drop_down</i></a></li>
-              <ul id="dropdown3" className="dropdown-content">
-              {
-                mandalas.map(mandala => {
-                  return (
-                    <li key={mandala.id}>
-                      <a href={`/#/mandalas/${mandala.id}`}>{mandala.name}</a>
-                    </li>
-                  );
-                })
-              }
-              </ul>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  );
+import Menu from '@material-ui/icons/Menu';
+// import { StringDecoder } from 'string_decoder';
+
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  flex: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+  list: {
+    width: 200,
+    marginLeft: 20
+  },
+  fullList: {
+    width: 'auto'
+  }
 };
 
-const mapStateToProps = ({ mantras, mandalas }) => {
-  return {
-    mantras,
-    mandalas
-  };
+class Nav extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      left: false,
+    };
+    this.toggleDrawer = this.toggleDrawer.bind(this);
+  }
+
+  toggleDrawer() {
+    this.setState({ left: !this.state.left });
+  }
+  render() {
+    const { classes } = this.props;
+
+    const sideList = (
+      <div className={classes.list}>
+        <List>
+          <ListItemText>
+            Login/Logout          
+          </ListItemText>
+        </List>
+        <Divider />
+        <List>
+          <ListItemText>
+            <a href="/">home</a>          
+          </ListItemText>
+        </List>
+        
+        <List>
+          <ListItemText>
+            <a href="/#/mantracreate">create mantra</a>          
+          </ListItemText>
+        </List>
+        
+        <List>
+          <ListItemText>
+            <a href="/#/mandalacreate">create mandala</a>
+          </ListItemText>
+        </List>
+        <List>
+          <ListItemText>
+            <a href="/#/mantras">mantras</a>          
+          </ListItemText>
+        </List>
+        
+        <List>
+          <ListItemText>
+            <a href="/#/mandalas">mandalas</a>          
+          </ListItemText>
+        </List>
+      </div>
+    )
+    // backgroundColor: "#E65100"
+
+    return (
+      <div className={classes.root}>
+        <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
+        {/*style={{backgroundColor: "#FF5722"}}*/}
+          <Toolbar>
+            <IconButton onClick={this.toggleDrawer} className={classes.menuButton} color="inherit" aria-label="Menu" style={{ background: 'transparent'}}>
+              <Menu />
+            </IconButton>
+            <Drawer open={this.state.left} onClose={this.toggleDrawer}>
+              <div
+                tabIndex={0}
+                role="button"
+                onClick={this.toggleDrawer}
+                onKeyDown={this.toggleDrawer}
+              >
+                {sideList}
+              </div>
+            </Drawer>
+            <Typography variant="title" color="inherit" className={classes.flex}>
+              
+            </Typography>
+            <Button><a href="/" style={{color: "white"}}>Six Words</a></Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+}
+
+Nav.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(Nav);
+export default withStyles(styles)(Nav);

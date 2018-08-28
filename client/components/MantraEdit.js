@@ -11,6 +11,22 @@ class MantraEdit extends React.Component {
       something: true
     };
     this.onDelete = this.onDelete.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onChangeLine = this.onChangeLine.bind(this);
+  }
+
+  onChange(ev) {
+    this.setState({ [ ev.target.name ]: ev.target.value });
+  }
+
+  onChangeLine(ev) {
+    this.setState({});
+  }
+
+  onUpdate(ev) {
+    ev.preventDefault()
+
   }
   onDelete(ev) {
     ev.preventDefault();
@@ -26,7 +42,6 @@ class MantraEdit extends React.Component {
     console.log(mantra);
     return (
       <div>
-      <hr />
       <h5 className="white-text">
         {
           mantra ? mantra.name : null
@@ -49,6 +64,9 @@ class MantraEdit extends React.Component {
           
         */}
       <div>
+        <button className="white-text btn" onClick={onUpdate}>Update</button>
+      </div>
+      <div>
         <button className="white-text btn" onClick={onDelete}>Delete</button>
       </div>
       </div>
@@ -57,13 +75,11 @@ class MantraEdit extends React.Component {
   }
 }
 
-const mapStateToProps = ({ mantras }, { id }) => {
-  if (!id) {
-    return null;
-  }
+const mapState = ({mantras}, { id }) => {
   const mantra = mantras.find(mantra => mantra.id === id);
   return {
-    mantra
+    mantra,
+    id
   };
 };
 
@@ -74,4 +90,4 @@ const mapDispatch = (dispatch, { history }) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatch)(MantraEdit);
+export default connect(mapState, mapDispatch)(MantraEdit);

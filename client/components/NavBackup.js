@@ -1,47 +1,15 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, IconButton, MenuIcon } from '@material-ui/core';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  flex: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
-
-const Nav4 = (props) => {  //({ mantras, mandalas })
-  const { classes } = props;
+const NavBackup = ({ mantras, mandalas }) => {
   return (
-    <Fragment>
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-    
-    {/*<div>
+    <div>
       <nav>
-        <div className="nav-wrapper blue-grey darken-4">
+        <div className="nav-wrapper orange darken-4">
           <a href="#" className="brand-logo right">Six Words</a>
           <ul id="nav-mobile" className="left hide-on-med-and-down">
             <li><a href="" className="dropdown-button" data-activates="dropdown1" data-beloworigin="true">account<i className="material-icons right">arrow_drop_down</i></a></li>
-              <ul id="dropdown1" className="dropdown-content"> 
+              <ul id="dropdown1" className="dropdown-content">
                 <li><a href="/#/mantracreate">create mantra</a></li>
                 <li><a href="/#/mandalacreate">create mandala</a></li>
               </ul>
@@ -72,13 +40,8 @@ const Nav4 = (props) => {  //({ mantras, mandalas })
           </ul>
         </div>
       </nav>
-            </div>*/}
-    </Fragment>
+    </div>
   );
-};
-
-Nav4.propTypes = {
-  classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ mantras, mandalas }) => {
@@ -88,5 +51,4 @@ const mapStateToProps = ({ mantras, mandalas }) => {
   };
 };
 
-
-export default connect(mapStateToProps)(withStyles(styles)(Nav4));
+export default connect(mapStateToProps)(NavBackup);

@@ -45,7 +45,7 @@ class MandalaCreate extends Component {
       <div style={{flexGrow: 1}}>
         <Grid container spacing={24}> 
           <Grid item xs={12}>            
-            <h4 className="padded" style={{color: "white", textAlign: "center"}}>New Mandala</h4>
+            <h4 className="padded" style={{color: "white", textAlign: "center", marginBottom: "80px"}}>New Mandala</h4>
           </Grid> 
           <Grid item xs={1}>
             <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
@@ -67,8 +67,8 @@ class MandalaCreate extends Component {
             </form>
           </Grid>
           <Grid item xs={6}>
-            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
-              <img src="/images/SnowFlake.jpg" width={400} />
+            <Paper style={{textAlign: "center", background: 'transparent'}}>            
+              <img src="/images/mandalapurple.jpg" width={400} />
             </Paper>
           </Grid>
         </Grid>

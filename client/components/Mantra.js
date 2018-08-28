@@ -105,7 +105,7 @@ class Mantra extends React.Component {
     return (
       <Grid container spacing={24}>
         <Grid item xs={12} style={{textAlign: 'center'}}>
-          <Paper elevation={1} style={{backgroundColor: 'black', color: 'white'}}>
+          <Paper elevation={1} style={{background: 'transparent', color: 'white'}}>
  
               {
                 startDisable ? (null) : (<h3 className="white-text padded">{mantra.name}</h3>)
@@ -119,7 +119,7 @@ class Mantra extends React.Component {
         <Grid item xs={12} style={{textAlign: 'center'}}>
           <div>
           {
-            startDisable ? (null) : (<button className="btn waves-effect green darken-4" onClick={onStart} disabled={startDisable === true}>Start</button>)
+            startDisable ? (null) : (<button className="btn waves-effect" onClick={onStart} disabled={startDisable === true}>Start</button>)
           }
           </div>
           <br />
@@ -146,7 +146,7 @@ class Mantra extends React.Component {
         <Grid>
           <div>
             {
-              startDisable ? (null) : (<Link to={`/mantras/${id}/edit`}><button className="btn waves-effect green darken-4">Edit</button></Link>)
+              startDisable ? (null) : (<Link to={`/mantras/${id}/edit`}><button className="btn waves-effect">Edit</button></Link>)
             }
           </div>
         </Grid>

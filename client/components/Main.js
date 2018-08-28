@@ -4,11 +4,7 @@ import { connect } from 'react-redux';
 
 import { getMantras, getMandalas } from '../store';
 
-// import Nav from './Nav';
-// import Nav2 from './Nav2';
-// import Nav3 from './Nav3';
-// import Nav4 from './Nav4';
-import Nav5 from './Nav5';
+import Nav from './Nav';
 import Home from './Home';
 import Mantras from './Mantras';
 import Mandalas from './Mandalas';
@@ -16,7 +12,6 @@ import Mantra from './Mantra';
 import Mandala from './Mandala';
 import MantraCreate from './MantraCreate';
 import MandalaCreate from './MandalaCreate';
-import FloatingActionButtons from './FloatingActionButtons';
 import MantraEdit from './MantraEdit';
 
 
@@ -29,8 +24,7 @@ class Main extends React.Component {
     return (
       <HashRouter>
         <div>
-          <Route render={({location}) => <Nav5 path={location.pathname} />} />
-          {/*<Route render={({location}) => <Nav2 path={location.pathname} />} />*/}
+          <Route render={({location}) => <Nav path={location.pathname} />} />
             <div className="container-fluid">
               <Switch>
                 <Route path="/mantracreate" exact render={({history}) => <MantraCreate history={history} /> } />
@@ -41,8 +35,6 @@ class Main extends React.Component {
                 <Route path="/lines/:id" exact render={({match, history}) => <Line id={ match.params.id * 1 } history={ history } /> } />
                 <Route exact path="/mantras" component={ Mantras } />
                 <Route exact path="/mandalas" component={ Mandalas } />
-                <Route exact path="/buttons" component={ FloatingActionButtons } />
-
                 <Route exact path="/" component={ Home } />
               </Switch>
             </div>

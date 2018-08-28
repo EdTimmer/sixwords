@@ -42,16 +42,16 @@ class MantraCreate extends Component {
     const { onChange, onAddLine, onSave, onNewLine } = this;
     return (
       <div style={{flexGrow: 1}}>
-        <Grid container spacing={24}>
+        <Grid container spacing={0}>
           <Grid item xs={12}>            
-            <h4 style={{color: "white", textAlign: "center"}}>New Mantra</h4>
+            <h4 style={{color: "white", textAlign: "center", marginBottom: "80px"}}>New Mantra</h4>
           </Grid>  
-          <Grid item xs={4}>
-            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
-              <img src="/images/text.jpg" width={450} />
+          <Grid item xs={6}>
+            <Paper style={{textAlign: "center", background: 'transparent'}}>            
+              <img src="/images/text2.jpg" width={450} />
             </Paper>
           </Grid> 
-          <Grid item xs={6}>            
+          <Grid item xs={4}>            
             <form onSubmit={ onSave }>
               <div className="padded">
                 <input name="name" onChange={onChange} placeholder="Mantra Name" />
