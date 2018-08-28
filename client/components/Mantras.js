@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Mantras = ({ mantras }) => {
   return (
     <div className="container">
-      <h1>Mantras</h1>
+      <h1 style={{color: "white"}}>Mantras</h1>
       <div>
         {
           mantras.map(mantra => {
