@@ -24,6 +24,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "body-parser": "^1.18.3",
     "express": "^4.16.2",
     "jwt-simple": "^0.5.1",
     "pg": "^7.4.1",
@@ -37,5 +38,5 @@
     "sequelize": "^4.35.1",
     "webpack": "^3.11.0"
   },
-  "devDependencies": {}  
+  "devDependencies": {}
 }
