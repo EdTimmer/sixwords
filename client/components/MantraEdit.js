@@ -8,26 +8,53 @@ class MantraEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      something: true
+      id: this.props.mantra ? this.props.mantra.id : '',
+      name: this.props.mantra ? this.props.mantra.name : '',
+      description: this.props.mantra ? this.props.mantra.description : '',
+      lines: this.props.mantra ? this.props.mantra.lines : ''
     };
     this.onDelete = this.onDelete.bind(this);
-    this.onUpdate = this.onUpdate.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onChangeLine = this.onChangeLine.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleLineChange = this.handleLineChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onDeleteLine = this.onDeleteLine.bind(this);
   }
 
-  onChange(ev) {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.mantra) {
+      this.setState({
+        id: nextProps.mantra.id,
+        name: nextProps.mantra.name,
+        description: nextProps.mantra.description,
+        lines: nextProps.mantra.lines
+      })
+    }
+  }
+
+  handleChange(ev) {
     this.setState({ [ ev.target.name ]: ev.target.value });
   }
 
-  onChangeLine(ev) {
-    this.setState({});
+  handleLineChange(ev) {
+    let newArr = this.state.lines.slice();
+    let index = ev.target.name;
+    newArr[index] = ev.target.value;
+    this.setState({ lines: newArr });
   }
 
-  onUpdate(ev) {
-    ev.preventDefault()
-
+  handleSubmit(ev) {
+    ev.preventDefault();
+    this.props.updateMantra(this.state);
   }
+
+  onDeleteLine(ev) {
+    ev.preventDefault();
+    let newArr = this.state.lines.slice();
+    let index = ev.target.name;
+    newArr.splice(index, 1);
+    this.setState({ lines: newArr });
+  }
+
   onDelete(ev) {
     ev.preventDefault();
     const mantraInfo = {
@@ -36,42 +63,66 @@ class MantraEdit extends React.Component {
     this.props.deleteMantra(mantraInfo);
   }
   render() {
-    const { mantra } = this.props; 
-    // const { lines } = this.props.mantra.lines;
-    const { onDelete } = this;
-    console.log(mantra);
+    const { mantra } = this.props;
+    const { name, description, lines } = this.state;
+    const { onDelete, onDeleteLine, handleChange, handleLineChange, handleSubmit } = this;
+    // if (!mantra) {
+    //   return null;
+    // }
+
     return (
-      <div>
-      <h5 className="white-text">
-        {
-          mantra ? mantra.name : null
-        }
-      </h5>
       <div className="white-text">
-        {
-          mantra ? (
-            mantra.lines.map(line => {
-              return (
-                <p key={mantra.lines.indexOf(line)}>
-                  {line}
-                </p>
-              )
-            })
-          ) : null
-        }
+        <form onSubmit={ handleSubmit } className="white-text">
+          <div>
+            <h5>Name:</h5>
+          </div>
+          <div>
+          {
+            mantra ? (
+              <input value={ name } name="name" onChange={ handleChange } />
+            ) : (null)
+          }
+          </div>
+          <div>
+            <h5>Description:</h5>
+          </div>
+          <div>
+            {
+              mantra ? (
+                <input value={ description } name="description" onChange={ handleChange } />
+              ) : (null)
+            }
+          </div>
+          <div>
+            <h5>Lines:</h5>
+          </div>
+          <div className="white-text">
+            {
+              mantra ? (
+                lines.map(line => {
+                  return (
+                    <div key={lines.indexOf(line)}>
+                      <input value={line} name={lines.indexOf(line)} onChange={ handleLineChange } />
+                      <div>
+                        <button className="white-text btn" name={lines.indexOf(line)} onClick={ onDeleteLine }>Delete Line</button>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : null
+            }
+          </div>
+          <br />
+          <div>
+            <button className="white-text btn" onClick={handleChange}>Update Mantra</button>
+          </div>
+        </form>
+        <br />
+        <div>
+          <button className="white-text btn" onClick={onDelete}>Delete Mantra</button>
+        </div>
       </div>
-        {/*
-          
-        */}
-      <div>
-        <button className="white-text btn" onClick={onUpdate}>Update</button>
-      </div>
-      <div>
-        <button className="white-text btn" onClick={onDelete}>Delete</button>
-      </div>
-      </div>
-    )
-    
+    );
   }
 }
 
