@@ -41,10 +41,10 @@ class MantraCreate extends Component {
     const { line, showNewLineBtn } = this.state;
     const { onChange, onAddLine, onSave, onNewLine } = this;
     return (
-      <div style={{flexGrow: 1}}>
+      <div style={{flexGrow: 1, color: "white"}}>
         <Grid container spacing={0}>
           <Grid item xs={12}>            
-            <h4 style={{color: "white", textAlign: "center", marginBottom: "80px"}}>New Mantra</h4>
+            <h4 style={{textAlign: "center", marginBottom: "80px"}}>New Mantra</h4>
           </Grid>  
           <Grid item xs={6}>
             <Paper style={{textAlign: "center", background: 'transparent'}}>            

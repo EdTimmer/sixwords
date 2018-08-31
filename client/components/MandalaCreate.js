@@ -42,10 +42,10 @@ class MandalaCreate extends Component {
   render() {
     const { onChange, onSave, previewFile } = this;
     return (
-      <div style={{flexGrow: 1}}>
+      <div style={{flexGrow: 1, color: "white"}}>
         <Grid container spacing={24}> 
           <Grid item xs={12}>            
-            <h4 className="padded" style={{color: "white", textAlign: "center", marginBottom: "80px"}}>New Mandala</h4>
+            <h4 className="padded" style={{textAlign: "center", marginBottom: "80px"}}>New Mandala</h4>
           </Grid> 
           <Grid item xs={1}>
             <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
