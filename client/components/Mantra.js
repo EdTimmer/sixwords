@@ -35,7 +35,7 @@ class Mantra extends React.Component {
       setTimeout(function() {
         that.setState({opacity: 1, scale: 1.2});
         resolve({});
-      }, 1000);
+      }, 0);
     });
     return promise;
   }  
@@ -60,7 +60,7 @@ class Mantra extends React.Component {
     setTimeout(function() {
 
       resolve({});
-      }, 1650);
+      }, 2000);
     });
       return promise;
   }
@@ -79,24 +79,28 @@ class Mantra extends React.Component {
     this.initialComponentsFadeOut();
     // audio.play();
     const playAll = () => {
-      // this.fadeIn()
-      this.pause()
-      .then(this.fadeIn)
+      this.fadeIn()
+      // this.pause()
+      // .then(this.fadeIn)
       .then(this.fadeOut)
       .then(this.pause)
       .then(() => {
-        if (this.state.counter < this.props.mantra.lines.length - 1) {
-          this.setState({counter: this.state.counter + 1});
-          playAll();
-        }
-        else {
-          this.setState({counter: 0, startOpacity: 1})
-          return null;
-        }
+      if (this.state.counter < this.props.mantra.lines.length - 1) {
+        this.setState({counter: this.state.counter + 1});
+        playAll();
+      }
+      else {
+        this.setState({counter: 0, startOpacity: 1})
+        return null;
+      }
       })
+      .then(this.pause);
     }
-    playAll();
-  }
+    this.pause()
+      .then(playAll)
+      .then(this.pause)
+    // playAll();
+    }
 
   render() {
     const { mantra, id } = this.props;
