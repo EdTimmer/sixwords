@@ -87,7 +87,7 @@ class MantraEdit extends React.Component {
   }
   render() {
     const { mantra } = this.props;
-    const { name, description, lines, line, showLineCreate, showNewLineBtn } = this.state;
+    const { id, name, description, lines, line, showLineCreate, showNewLineBtn } = this.state;
     const { onDelete, onDeleteLine, onChange, handleLineChange, handleSubmit, onNewLine, onAddLine } = this;
     // if (!mantra) {
     //   return null;
@@ -97,8 +97,8 @@ class MantraEdit extends React.Component {
       <div style={{flexGrow: 1}}>
         <Grid container spacing={0}>
           <Grid item xs={12}>
-            <h4 style={{color: "white", textAlign: "center"}}>{name}</h4>
-            <h4 style={{color: "white", textAlign: "center", marginBottom: "80px"}}>Edit Mantra</h4>
+            <h4 style={{color: "white", textAlign: "center"}}><Link to={`/mantras/${id}`}>{name}</Link></h4>
+            <h5 style={{color: "white", textAlign: "center", marginBottom: "80px"}}>edit mantra</h5>
           </Grid>  
           <Grid item xs={2}>
             <Paper style={{textAlign: "center", background: 'transparent'}}>             
@@ -144,23 +144,23 @@ class MantraEdit extends React.Component {
                     ) : null
                   }
                 </div>
-                <div className="white-text padded">
+                <div className="white-text">
                   {
                     showLineCreate ? (<LineCreate onChange={this.onChange} onAddLine={onAddLine} line={line} />) : null
                   }
                 </div>
-                <div className="padded">
+                <div>
                   {
                     showNewLineBtn ? (<button className="btn" onClick={onNewLine}>New Line</button>) : (null)
                   }                
                 </div>
                 <br />
-                <div>
+                <div style={{textAlign: 'center'}}>
                   <button className="white-text btn" onClick={onChange}>Update Mantra</button>
                 </div>
               </form>
               <br />
-              <div>
+              <div style={{textAlign: 'right'}}>
                 <button className="white-text btn red" onClick={onDelete}>Delete Mantra</button>
               </div>
             </div>

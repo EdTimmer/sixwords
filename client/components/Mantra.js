@@ -8,8 +8,8 @@ class Mantra extends React.Component {
     super(props);
     this.state = {
       counter: 0,
-      startDisable: false,
       opacity: 0,
+      startOpacity: 1,
       scale: 1,
       soundOn: true
     }
@@ -18,6 +18,11 @@ class Mantra extends React.Component {
     this.fadeOut = this.fadeOut.bind(this);
     this.pause = this.pause.bind(this);
     this.soundToggle = this.soundToggle.bind(this);
+    this.initialComponentsFadeOut = this.initialComponentsFadeOut.bind(this);
+  }
+
+  initialComponentsFadeOut() {
+    this.setState({ startOpacity: 0 });
   }
 
   fadeIn() {
@@ -55,7 +60,7 @@ class Mantra extends React.Component {
     setTimeout(function() {
 
       resolve({});
-      }, 2000);
+      }, 1650);
     });
       return promise;
   }
@@ -67,15 +72,17 @@ class Mantra extends React.Component {
 
   onStart(ev) {
     ev.preventDefault();
-    this.setState({startDisable: true});
     let audio = new Audio('/sounds/indianBell.wav');
     if (this.state.soundOn) {
       audio.play();
     }
+    this.initialComponentsFadeOut();
     // audio.play();
     const playAll = () => {
-      this.fadeIn()      
-      .then(this.fadeOut)      
+      // this.fadeIn()
+      this.pause()
+      .then(this.fadeIn)
+      .then(this.fadeOut)
       .then(this.pause)
       .then(() => {
         if (this.state.counter < this.props.mantra.lines.length - 1) {
@@ -83,7 +90,7 @@ class Mantra extends React.Component {
           playAll();
         }
         else {
-          this.setState({counter: 0, startDisable: false})
+          this.setState({counter: 0, startOpacity: 1})
           return null;
         }
       })
@@ -93,9 +100,10 @@ class Mantra extends React.Component {
 
   render() {
     const { mantra, id } = this.props;
-    const { counter, startDisable } = this.state;
+    const { counter, soundOn, startOpacity } = this.state;
     const { onStart, soundToggle } = this;
     console.log('counter is:', counter);
+    const sound = soundOn ? 'sound on' : 'sound off';
     
     if (!mantra ) {
       return null;
@@ -105,58 +113,43 @@ class Mantra extends React.Component {
     return (
       <Grid container spacing={24}>
         <Grid item xs={12} style={{textAlign: 'center'}}>
-          <Paper elevation={1} style={{background: 'transparent', color: 'white'}}>
- 
-              {
-                startDisable ? (null) : (<h3 className="white-text padded">{mantra.name}</h3>)
-              }
-
-              {
-                startDisable ? (null) : (<h3 className="white-text padded">{mantra.description}</h3>)
-              }            
-          </Paper>       
-        </Grid>       
+          <div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`, marginTop: 150}}>                       
+            <h1 className="white-text">{mantra.lines ? mantra.lines[counter] : null}</h1>       
+          </div>
+        </Grid>
+        <Grid item xs={12} style={{textAlign: 'center'}}>
+          <Paper elevation={1} style={{background: 'transparent', color: 'white'}}> 
+            <h3 style={{transition: 'all 2s ease-out', opacity: startOpacity}} className="white-text">{mantra.name}</h3>
+            <h4 style={{transition: 'all 2s ease-out', opacity: startOpacity}} className="white-text">{mantra.description}</h4>         
+          </Paper>
+        </Grid>
         <Grid item xs={12} style={{textAlign: 'center'}}>
           <div>
           {
-            startDisable ? (null) : (<button className="btn waves-effect" onClick={onStart} disabled={startDisable === true}>Start</button>)
-          }
-          </div>
-          <br />
-          <div> 
-          {
-            startDisable ? (null) : (
-              <FormControlLabel
+            <FormControlLabel style={{transition: 'all 2s ease-out', opacity: startOpacity}}
                 control={
                   <Switch
                     checked={this.state.soundOn}
-                    onChange={this.soundToggle}
+                    onChange={soundToggle}
                     value="soundOn"
                     color="primary"
                   />
                 }
-                label={<span style={{ color: 'white' }}>Sound</span>}
+                label={<span style={{ color: 'white' }}><h5>{sound}</h5></span>}
             />
-            )
-          }    
-          </div>                       
-        </Grid>
-        <Grid item xs={12} />
-        <Grid item xs={12} />
-        <Grid>
-          <div>
-            {
-              startDisable ? (null) : (<Link to={`/mantras/${id}/edit`}><button className="btn waves-effect">Edit</button></Link>)
-            }
+          }
           </div>
+          <br />
+          <div>
+            <button style={{transition: 'all 2s ease-out', opacity: startOpacity}} className="btn waves-effect" onClick={onStart}>Start</button>          
+          </div>                    
         </Grid>
+        <Grid item xs={12} />
+        <Grid item xs={12} />
         <Grid item xs={12} style={{textAlign: 'center'}}>
-
-              <div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`, marginTop: 150}}>
-                             
-                <h1 className="white-text">{mantra.lines ? mantra.lines[counter] : null}</h1>       
-              </div>
-
+          <div>
+            <Link to={`/mantras/${id}/edit`}><button style={{transition: 'all 2s ease-out', opacity: startOpacity}} className="btn waves-effect orange">Edit</button></Link>
+          </div>
         </Grid>
       </Grid>
     );
