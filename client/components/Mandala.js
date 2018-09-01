@@ -103,7 +103,7 @@ class Mandala extends React.Component {
         
         <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: 1, color: 'white'}}>
           <div>
-            <button className="btn waves-effect black" style={{opacity: 1}} onClick={onStart}>OM</button>          
+            <button className="btn-floating btn-large waves-effect purple" style={{opacity: 1}} onClick={onStart}><img src={"/images/hinduism.png"} /></button>          
           </div>
         </Grid>
         <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
