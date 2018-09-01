@@ -116,7 +116,7 @@ class Mantra extends React.Component {
     return (
       <Grid container spacing={24}>
         <Grid item xs={12} style={{textAlign: 'center', color: 'white'}}>
-          <div style={{transition: 'all 2s ease-out', opacity: opacity, transform: `scale(${this.state.scale})`, marginTop: 150}}>                       
+          <div style={{transition: 'all 2s ease-in-out', opacity: opacity, transform: `scale(${this.state.scale})`, marginTop: 150}}>                       
             <h1>{mantra.lines ? mantra.lines[counter] : null}</h1>       
           </div>
         </Grid>

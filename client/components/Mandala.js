@@ -74,7 +74,7 @@ class Mandala extends React.Component {
     }
     return (
       <Grid container spacing={24}>
-        <Grid item xs={12} style={{textAlign: 'center', color: 'white', transition: 'all 2s ease-out', opacity: opacity, marginTop: 150}}>
+        <Grid item xs={12} style={{textAlign: 'center', color: 'white', transition: 'all 2s ease-in-out', opacity: opacity, marginTop: 150}}>
           <img src={mandala.imageURL} width={500} />
         </Grid>
 
