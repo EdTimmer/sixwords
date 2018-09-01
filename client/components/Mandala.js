@@ -1,112 +1,117 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Grid, Paper, Switch, FormControlLabel } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 class Mandala extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 0,
-      // startDisable: false,
-      opacity: 1,
-      scale: 1
+      opacity: 0,
+      startOpacity: 1,
+      soundOn: true,
+      start: true
     }
     this.onStart = this.onStart.bind(this);
-    this.fadeIn = this.fadeIn.bind(this);
-    this.fadeOut = this.fadeOut.bind(this);
+    this.fade = this.fade.bind(this);
+    // this.fadeOut = this.fadeOut.bind(this);
     this.pause = this.pause.bind(this);
+    this.soundToggle = this.soundToggle.bind(this);
   }
 
-  fadeIn() {
-    console.log('called fadeIn');
+  fade(res) {
     let that = this;
-    if (that.state.counter > that.props.mantra.lines.length) {
-      that.setState({counter: 0});
-    }
     let promise = new Promise(function(resolve, reject) {
-      setTimeout(function() {
-        that.setState({opacity: 1, scale: 1.2});
-        resolve({});
-      }, 1000);
+      if (that.state.start) {
+        that.setState({opacity: 1, startOpacity: 0, start: false});
+        resolve({})
+      }
+      else if (!that.state.start) {
+        that.setState({opacity: 0, startOpacity: 1, start: true});
+        resolve({})
+      }
     });
     return promise;
-  }  
-  
-  fadeOut(res) {
-    console.log('called fadeOut');
-    let that = this;
-    let promise = new Promise(function(resolve, reject){
-    if (that.state.counter > that.props.mantra.lines.length ){
-      that.setState({counter: 0})
-    }
-    setTimeout(function() {
-      that.setState({opacity: 0, scale: 1})
-      resolve({});
-      }, 4000);
-    });
-      return promise;
   }
 
   pause(res) {
+    let that = this;
     let promise = new Promise(function(resolve, reject){
-    setTimeout(function() {
-
+    setTimeout(function() {      
       resolve({});
       }, 2000);
     });
+      console.log('state', that.state)
       return promise;
+  }
+
+  soundToggle(ev) {
+    ev.preventDefault();
+    this.setState({soundOn: !this.state.soundOn})
   }
 
   onStart(ev) {
     ev.preventDefault();
-    this.setState({startDisable: true});
     let audio = new Audio('/sounds/indianBell.wav');
-    audio.play()
+    if (this.state.soundOn && this.state.start) {
+      audio.play();
+    }
     const playAll = () => {
-      this.fadeIn()      
-      .then(this.fadeOut)      
-      .then(this.pause)
-      .then(() => {
-        if (this.state.counter < this.props.mantra.lines.length - 1) {
-          this.setState({counter: this.state.counter + 1});
-          playAll();
-        }
-        else {
-          this.setState({counter: 0, startDisable: false})
-          return null;
-        }
-      })
+      this.fade()      
+        .then(this.pause)
     }
     playAll();
   }
 
   render() {
-    const { mandala } = this.props;
-    const { counter } = this.state;
-    const { onStart } = this;
-    console.log('counter is:', counter);
-    
+    const { mandala, id } = this.props;
+    const { soundOn, opacity, startOpacity } = this.state;
+    const { onStart, soundToggle } = this;
+    const sound = soundOn ? 'sound on' : 'sound off';
+        
     if (!mandala ) {
       return null;
     }
     return (
-      <div className="container center-align">
-        <div className="row">
-          <div className="s12 extrapadded">
-            <h5 className="white-text padded">{mandala.name}</h5>
-          </div>
-        </div>
-       
-        <div className="row">
+      <Grid container spacing={24}>
+        <Grid item xs={12} style={{textAlign: 'center', color: 'white', transition: 'all 2s ease-out', opacity: opacity, marginTop: 150}}>
+          <img src={mandala.imageURL} width={500} />
+        </Grid>
+
+        <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
+          <Paper elevation={1} style={{background: 'transparent'}}>
+            <h5>{mandala.name}</h5>
+            <p>{mandala.description}</p>
+          </Paper>
           <div>
-            <div>
-              {/*<div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`}}>*/} 
-              <p><br /></p>               
-                <img src={mandala.imageURL} width={500} />
-              {/*</div>*/}
-            </div>
+            {
+              <FormControlLabel
+                  control={
+                    <Switch
+                      checked={soundOn}
+                      onChange={soundToggle}
+                      value="soundOn"
+                      color="primary"
+                    />
+                  }
+                  label={<span style={{ color: 'white' }}><h5>{sound}</h5></span>}
+              />
+            }
           </div>
-        </div>
-      </div>
+          <br />
+        </Grid>
+        
+        <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: 1, color: 'white'}}>
+          <div>
+            <button className="btn waves-effect black" style={{opacity: 1}} onClick={onStart}>OM</button>          
+          </div>
+        </Grid>
+        <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
+          <div>
+            <Link to={`/mandalas/${id}/edit`}><button className="btn waves-effect orange" style={{marginTop: 50}}>Edit</button></Link>
+          </div>
+        </Grid>
+      </Grid>
     );
   }
 }
@@ -118,7 +123,8 @@ const mapStateToProps = ({ mandalas }, { id }) => {
   const mandala = mandalas.find(mandala => mandala.id === id);
   // console.log('mandala is:', mandala)
   return {
-    mandala
+    mandala,
+    id
   };
 };
 

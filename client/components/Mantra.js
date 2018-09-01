@@ -12,7 +12,7 @@ class Mantra extends React.Component {
       startOpacity: 1,
       scale: 1,
       soundOn: true
-    }
+    };
     this.onStart = this.onStart.bind(this);
     this.fadeIn = this.fadeIn.bind(this);
     this.fadeOut = this.fadeOut.bind(this);
@@ -50,11 +50,10 @@ class Mantra extends React.Component {
     setTimeout(function() {
       that.setState({opacity: 0, scale: 1})
       resolve({});
-      }, 4000);
+      }, 3000);
     });
       return promise;
   }
-
   pause(res) {
     let promise = new Promise(function(resolve, reject){
     setTimeout(function() {
@@ -104,7 +103,7 @@ class Mantra extends React.Component {
 
   render() {
     const { mantra, id } = this.props;
-    const { counter, soundOn, startOpacity } = this.state;
+    const { counter, soundOn, opacity, startOpacity } = this.state;
     const { onStart, soundToggle } = this;
     console.log('counter is:', counter);
     const sound = soundOn ? 'sound on' : 'sound off';
@@ -116,24 +115,23 @@ class Mantra extends React.Component {
    
     return (
       <Grid container spacing={24}>
-        <Grid item xs={12} style={{textAlign: 'center'}}>
-          <div style={{transition: 'all 2s ease-out', opacity: this.state.opacity, transform: `scale(${this.state.scale})`, marginTop: 150}}>                       
-            <h1 className="white-text">{mantra.lines ? mantra.lines[counter] : null}</h1>       
+        <Grid item xs={12} style={{textAlign: 'center', color: 'white'}}>
+          <div style={{transition: 'all 2s ease-out', opacity: opacity, transform: `scale(${this.state.scale})`, marginTop: 150}}>                       
+            <h1>{mantra.lines ? mantra.lines[counter] : null}</h1>       
           </div>
         </Grid>
-        <Grid item xs={12} style={{textAlign: 'center'}}>
-          <Paper elevation={1} style={{background: 'transparent', color: 'white'}}> 
-            <h3 style={{transition: 'all 2s ease-out', opacity: startOpacity}} className="white-text">{mantra.name}</h3>
-            <h4 style={{transition: 'all 2s ease-out', opacity: startOpacity}} className="white-text">{mantra.description}</h4>         
+        
+        <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
+          <Paper elevation={1} style={{background: 'transparent'}}>
+            <h3>{mantra.name}</h3>
+            <h5>{mantra.description}</h5>
           </Paper>
-        </Grid>
-        <Grid item xs={12} style={{textAlign: 'center'}}>
           <div>
           {
-            <FormControlLabel style={{transition: 'all 2s ease-out', opacity: startOpacity}}
+            <FormControlLabel
                 control={
                   <Switch
-                    checked={this.state.soundOn}
+                    checked={soundOn}
                     onChange={soundToggle}
                     value="soundOn"
                     color="primary"
@@ -145,14 +143,10 @@ class Mantra extends React.Component {
           </div>
           <br />
           <div>
-            <button style={{transition: 'all 2s ease-out', opacity: startOpacity}} className="btn waves-effect" onClick={onStart}>Start</button>          
-          </div>                    
-        </Grid>
-        <Grid item xs={12} />
-        <Grid item xs={12} />
-        <Grid item xs={12} style={{textAlign: 'center'}}>
+            <button className="btn waves-effect" onClick={onStart}>Start</button>          
+          </div>
           <div>
-            <Link to={`/mantras/${id}/edit`}><button style={{transition: 'all 2s ease-out', opacity: startOpacity}} className="btn waves-effect orange">Edit</button></Link>
+            <Link to={`/mantras/${id}/edit`}><button className="btn waves-effect orange" style={{marginTop: 50}}>Edit</button></Link>
           </div>
         </Grid>
       </Grid>
