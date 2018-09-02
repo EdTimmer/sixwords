@@ -13,6 +13,7 @@ import Mandala from './Mandala';
 import MantraCreate from './MantraCreate';
 import MandalaCreate from './MandalaCreate';
 import MantraEdit from './MantraEdit';
+import MandalaEdit from './MandalaEdit';
 
 
 class Main extends React.Component {
@@ -29,6 +30,7 @@ class Main extends React.Component {
               <Switch>
                 <Route path="/mantracreate" exact render={({history}) => <MantraCreate history={history} /> } />
                 <Route path="/mantras/:id/edit" exact render={({match, history}) => <MantraEdit id={ match.params.id * 1} history={history} /> } />
+                <Route path="/mandalas/:id/edit" exact render={({match, history}) => <MandalaEdit id={ match.params.id * 1} history={history} /> } />
                 <Route path="/mandalacreate" exact render={({history}) => <MandalaCreate history={history} /> } />
                 <Route path="/mantras/:id" exact render={({match, history}) => <Mantra id={ match.params.id * 1 } history={ history } /> } />
                 <Route path="/mandalas/:id" exact render={({match, history}) => <Mandala id={ match.params.id * 1 } history={ history } /> } />

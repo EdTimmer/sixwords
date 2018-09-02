@@ -57,32 +57,22 @@ export const deleteMandala = (mandala, history) => (
   )
 );
 
-// export const savemandala = (mandala) => (  
-//   mandala.id ? (
-//     dispatch => (
-//       axios.put(`/v1/mandalas/${mandala.id}`, mandala)
-//         .then(result => result.data)
-//         .then(mandala => dispatch(updatemandalaInStore(mandala)))
-//     )
-//   ) : (
-//     dispatch => (
-//       // console.log('dispatch got called')
-//       axios.post('/v1/mandalas', mandala)
-//         // .then(result => console.log('result in dispatch is:', result))
-//         .then(result => result.data)
-//         // .then(mandala => console.log('mandala in dispatch is:', mandala))
-//         .then(mandala => dispatch(createMandalaInStore(mandala)))
-//     )
-//   )
-// );
-
 export const saveMandala = (mandala, history) => (
   dispatch => (
     axios.post('/v1/mandalas', mandala)
       .then(result => result.data)
       .then(mandala => dispatch(createMandalaInStore(mandala)))
       .then(() => history.push('./mandalas'))
-  ) 
-)
+  )
+);
+
+export const updateMandala = (mandala, history) => (
+  dispatch => (
+    axios.put(`/v1/mandalas/${mandala.id}`, mandala)
+      .then(result => result.data)
+      .then(mandala => dispatch(updateMandalaInStore(mandala)))
+      .then( () => history.push('/mandalas'))
+  )
+);
 
 export default reducer;

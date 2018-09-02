@@ -143,10 +143,10 @@ class Mantra extends React.Component {
           </div>
           <br />
           <div>
-            <button className="btn waves-effect" onClick={onStart}>Start</button>          
+            <button className="btn waves-effect indigo darken-4" onClick={onStart}>Start</button>          
           </div>
           <div>
-            <Link to={`/mantras/${id}/edit`}><button className="btn waves-effect orange" style={{marginTop: 50}}>Edit</button></Link>
+            <Link to={`/mantras/${id}/edit`}><button className="btn waves-effect transparent" style={{marginTop: 50}}>Edit</button></Link>
           </div>
         </Grid>
       </Grid>

@@ -8,6 +8,7 @@ class MandalaCreate extends Component {
     super(props);
     this.state = {
       name: '',
+      description: '',
       imageURL: this.props.mandala ? this.props.mandala.imageURL : null,
     };
     this.onChange = this.onChange.bind(this);
@@ -55,6 +56,9 @@ class MandalaCreate extends Component {
             <form onSubmit={ onSave }>
               <div>
                 <input name="name" onChange={onChange} placeholder="Mandala Name" />
+              </div>
+              <div>
+                <input name="description" onChange={onChange} placeholder="description" />
               </div>
               <div className="padded">
                 <label htmlFor='imageURL'>New Image: </label><br />

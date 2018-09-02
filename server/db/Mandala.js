@@ -6,6 +6,10 @@ const Mandala = conn.define('mandala', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: true
+  },
   imageURL: {
     type: Sequelize.TEXT,
     allowNull: true

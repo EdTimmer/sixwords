@@ -13,13 +13,14 @@ class Mandala extends React.Component {
       start: true
     }
     this.onStart = this.onStart.bind(this);
-    this.fade = this.fade.bind(this);
-    // this.fadeOut = this.fadeOut.bind(this);
+    this.fadeIn = this.fadeIn.bind(this);
+    // this.fadeInOut = this.fadeInOut.bind(this);
     this.pause = this.pause.bind(this);
     this.soundToggle = this.soundToggle.bind(this);
+    this.fadeOut = this.fadeOut.bind(this);
   }
 
-  fade(res) {
+  fadeIn(res) {
     let that = this;
     let promise = new Promise(function(resolve, reject) {
       if (that.state.start) {
@@ -32,6 +33,10 @@ class Mandala extends React.Component {
       }
     });
     return promise;
+  }
+
+  fadeOut() {
+    this.setState({opacity: 0, startOpacity: 1, start: true})
   }
 
   pause(res) {
@@ -57,7 +62,7 @@ class Mandala extends React.Component {
       audio.play();
     }
     const playAll = () => {
-      this.fade()      
+      this.fadeIn()      
         .then(this.pause)
     }
     playAll();
@@ -65,53 +70,61 @@ class Mandala extends React.Component {
 
   render() {
     const { mandala, id } = this.props;
-    const { soundOn, opacity, startOpacity } = this.state;
-    const { onStart, soundToggle } = this;
+    const { soundOn, opacity, startOpacity, start } = this.state;
+    const { onStart, soundToggle, fadeOut } = this;
     const sound = soundOn ? 'sound on' : 'sound off';
+    const action = start ? (<img src={"/images/play.png"} width={55} />) : (<img src={"/images/stop.png"} width={55} />);
         
     if (!mandala ) {
       return null;
     }
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={12} style={{textAlign: 'center', color: 'white', transition: 'all 2s ease-in-out', opacity: opacity, marginTop: 150}}>
-          <img src={mandala.imageURL} width={500} />
-        </Grid>
+      <div style={{flexGrow: 1, color: "white"}}>
+        <Grid container spacing={24}>
+          <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
+            <Paper elevation={1} style={{background: 'transparent'}}>
+              <h5>{mandala.name}</h5>
+              <p>{mandala.description}</p>
+            </Paper>
+          </Grid>
 
-        <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
-          <Paper elevation={1} style={{background: 'transparent'}}>
-            <h5>{mandala.name}</h5>
-            <p>{mandala.description}</p>
-          </Paper>
-          <div>
-            {
-              <FormControlLabel
-                  control={
-                    <Switch
-                      checked={soundOn}
-                      onChange={soundToggle}
-                      value="soundOn"
-                      color="primary"
-                    />
-                  }
-                  label={<span style={{ color: 'white' }}><h5>{sound}</h5></span>}
-              />
-            }
-          </div>
-          <br />
+
+          <Grid item xs={2} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
+            <div>
+            <Link to={`/mandalas/${id}/edit`}><button className="btn waves-effect transparent">Edit</button></Link>
+            </div>
+          </Grid>
+          <Grid item xs={8} style={{textAlign: 'center', color: 'white', transition: 'all 2s ease-in-out', opacity: opacity, marginTop: 50}}>
+            <img onClick={fadeOut} src={mandala.imageURL} width={500} />
+          </Grid>
+          
+          <Grid item xs={2} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
+            <div>
+              {
+                <FormControlLabel
+                    control={
+                      <Switch
+                        checked={soundOn}
+                        onChange={soundToggle}
+                        value="soundOn"
+                        color="primary"
+                      />
+                    }
+                    label={<span style={{ color: 'white' }}><h5>{sound}</h5></span>}
+                />
+              }
+            </div>
+            <div>
+              <button className="btn waves-effect indigo darken-4" onClick={onStart} style={{marginTop: 50}}>
+                start
+              </button>  
+              <p><i>click image to return</i></p>
+            </div>
+
+          </Grid>
         </Grid>
-        
-        <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: 1, color: 'white'}}>
-          <div>
-            <button className="btn-floating btn-large waves-effect purple" style={{opacity: 1}} onClick={onStart}><img src={"/images/hinduism.png"} /></button>          
-          </div>
-        </Grid>
-        <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
-          <div>
-            <Link to={`/mandalas/${id}/edit`}><button className="btn waves-effect orange" style={{marginTop: 50}}>Edit</button></Link>
-          </div>
-        </Grid>
-      </Grid>
+      </div>
+      
     );
   }
 }

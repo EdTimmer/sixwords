@@ -33,11 +33,13 @@ const mandalas = [
   {
     // id: 1,
     name: 'Sri Yantra',
+    description: '',
     imageURL: '/images/SriYantra.png',
   },
   {
     // id: 2,
     name: 'Shiva Shakti',
+    description: '',
     imageURL: '/images/SivaSakti.jpg',
   }
 
