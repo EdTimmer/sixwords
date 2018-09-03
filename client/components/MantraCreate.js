@@ -64,7 +64,7 @@ class MantraCreate extends Component {
                   this.state.lines.map(line => {
                     return (
                       <div key={this.state.lines.indexOf(line)}>  
-                        <h5 className="white-text padded">{line.toString()}</h5>
+                        <h5 className="white-text">{line.toString()}</h5>
                       </div>
                     )
                   })

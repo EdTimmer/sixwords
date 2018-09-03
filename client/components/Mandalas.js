@@ -11,7 +11,7 @@ const Mandalas = ({ mandalas }) => {
           mandalas.map(mandala => {
             return (
               <div key={mandala.id}>
-                <Link to={`mandalas/${mandala.id}`}>{mandala.name}</Link>
+                <Link to={`mandalas/${mandala.id}`}><h5>{mandala.name}</h5></Link>
               </div>
             )
           })

@@ -11,7 +11,7 @@ const Mantras = ({ mantras }) => {
           mantras.map(mantra => {
             return (
               <div key={mantra.id}>
-                <Link to={`mantras/${mantra.id}`}>{mantra.name}</Link>
+                <Link to={`mantras/${mantra.id}`}><h5>{mantra.name}</h5></Link>
               </div>
             )
           })

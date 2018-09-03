@@ -91,7 +91,10 @@ class Mandala extends React.Component {
 
           <Grid item xs={2} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
             <div>
-            <Link to={`/mandalas/${id}/edit`}><button className="btn waves-effect transparent">Edit</button></Link>
+            <br />
+            <Link to={`/mandalas`}><button className="btn transparent">All Mandalas</button></Link>
+            <Link to={`/mantras`}><button className="btn transparent">All Mantras</button></Link>
+            <Link to={`/mandalas/${id}/edit`}><button className="btn transparent" style={{marginTop: 50}}>Edit this mandala</button></Link>
             </div>
           </Grid>
           <Grid item xs={8} style={{textAlign: 'center', color: 'white', transition: 'all 2s ease-in-out', opacity: opacity, marginTop: 50}}>
