@@ -5,7 +5,12 @@ import { Link } from 'react-router-dom';
 const Mandalas = ({ mandalas }) => {
   return (
     <div className="container">
-      <h1 style={{color: "white"}}>Mandalas</h1>
+      <div>
+        <h1 style={{color: "white"}}>Mandalas</h1>
+      </div>
+      <div style={{textAlign: 'center'}}>
+        <Link to={`/mandalacreate`}><button className="btn transparent" style={{marginBottom: 50}}>Upload New Mandala</button></Link>
+      </div>
       <div>
         {
           mandalas.map(mandala => {

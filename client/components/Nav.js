@@ -68,7 +68,7 @@ class Nav extends React.Component {
         
         <List>
           <ListItemText>
-            <a href="/#/mandalacreate">create mandala</a>
+            <a href="/#/mandalacreate">upload new mandala</a>
           </ListItemText>
         </List>
         <List>

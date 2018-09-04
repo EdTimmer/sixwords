@@ -5,7 +5,12 @@ import { Link } from 'react-router-dom';
 const Mantras = ({ mantras }) => {
   return (
     <div className="container">
-      <h1 style={{color: "white"}}>Mantras</h1>
+      <div>
+        <h1 style={{color: "white"}}>Mantras</h1>
+      </div>      
+      <div style={{textAlign: 'center'}}>
+        <Link to={`/mantracreate`}><button className="btn transparent" style={{marginBottom: 50}}>Create New Mantra</button></Link>
+      </div>
       <div>
         {
           mantras.map(mantra => {
