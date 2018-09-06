@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Paper, Switch, FormControlLabel } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import SoundSwitch from './SoundSwitch';
 
 class Mandala extends React.Component {
   constructor(props) {
@@ -72,8 +73,9 @@ class Mandala extends React.Component {
     const { mandala, id } = this.props;
     const { soundOn, opacity, startOpacity, start } = this.state;
     const { onStart, soundToggle, fadeOut } = this;
-    const sound = soundOn ? 'sound on' : 'sound off';
+    const soundOnOffText = soundOn ? 'sound on' : 'sound off';
     const action = start ? (<img src={"/images/play.png"} width={55} />) : (<img src={"/images/stop.png"} width={55} />);
+    const soundOpacity = soundOn ? (1) : (0.5);
         
     if (!mandala ) {
       return null;
@@ -91,10 +93,15 @@ class Mandala extends React.Component {
 
           <Grid item xs={2} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
             <div>
-            <br />
-            <Link to={`/mandalas`}><button className="btn transparent">All Mandalas</button></Link>
-            <Link to={`/mantras`}><button className="btn transparent">All Mantras</button></Link>
-            <Link to={`/mandalas/${id}/edit`}><button className="btn transparent" style={{marginTop: 50}}>Edit this mandala</button></Link>
+              <div>
+                <Link to={`/mandalas`}><button className="btn transparent btnGreyBorder" style={{margin: 5}}>All Mandalas</button></Link>
+              </div>
+              <div>
+                <Link to={`/mantras`}><button className="btn transparent btnGreyBorder" style={{margin: 5}}>All Mantras</button></Link>
+              </div>
+              <div>
+                <Link to={`/mandalas/${id}/edit`}><button className="btn transparent btnGreyBorder" style={{margin: 5}}>Edit this mandala</button></Link>
+              </div>
             </div>
           </Grid>
           <Grid item xs={8} style={{textAlign: 'center', color: 'white', transition: 'all 2s ease-in-out', opacity: opacity, marginTop: 50}}>
@@ -102,27 +109,15 @@ class Mandala extends React.Component {
           </Grid>
           
           <Grid item xs={2} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
-            <div>
-              {
-                <FormControlLabel
-                    control={
-                      <Switch
-                        checked={soundOn}
-                        onChange={soundToggle}
-                        value="soundOn"
-                        color="primary"
-                      />
-                    }
-                    label={<span style={{ color: 'white' }}><h5>{sound}</h5></span>}
-                />
-              }
-            </div>
-            <div>
-              <button className="btn waves-effect indigo darken-4" onClick={onStart} style={{marginTop: 50}}>
-                start
-              </button>  
-              <p><i>click image to return</i></p>
-            </div>
+          
+          <SoundSwitch soundOpacity={soundOpacity} soundOn={soundOn} soundToggle={soundToggle} soundOnOffText={soundOnOffText} />
+            
+          <div>
+            <button className="btn waves-effect transparent btnBlueBorder" onClick={onStart} style={{marginTop: 30}}>
+              start
+            </button>  
+            <p><i>click image to return</i></p>
+          </div>
 
           </Grid>
         </Grid>

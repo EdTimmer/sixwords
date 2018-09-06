@@ -9,7 +9,7 @@ const Mandalas = ({ mandalas }) => {
         <h1 style={{color: "white"}}>Mandalas</h1>
       </div>
       <div style={{textAlign: 'center'}}>
-        <Link to={`/mandalacreate`}><button className="btn transparent" style={{marginBottom: 50}}>Upload New Mandala</button></Link>
+        <Link to={`/mandalacreate`}><button className="btn transparent btnGreyBorder" style={{marginBottom: 50}}>Upload</button></Link>
       </div>
       <div>
         {

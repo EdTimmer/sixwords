@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Paper, Switch, FormControlLabel } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import SoundSwitch from './SoundSwitch';
 
 class Mantra extends React.Component {
   constructor(props) {
@@ -106,7 +107,8 @@ class Mantra extends React.Component {
     const { counter, soundOn, opacity, startOpacity } = this.state;
     const { onStart, soundToggle } = this;
     console.log('counter is:', counter);
-    const sound = soundOn ? 'sound on' : 'sound off';
+    const soundOnOffText = soundOn ? 'sound on' : 'sound off';
+    const soundOpacity = soundOn ? (1) : (0.5);
     
     if (!mantra ) {
       return null;
@@ -126,30 +128,19 @@ class Mantra extends React.Component {
             <h3>{mantra.name}</h3>
             <h5>{mantra.description}</h5>
           </Paper>
-          <div>
-          {
-            <FormControlLabel
-                control={
-                  <Switch
-                    checked={soundOn}
-                    onChange={soundToggle}
-                    value="soundOn"
-                    color="primary"
-                  />
-                }
-                label={<span style={{ color: 'white' }}><h5>{sound}</h5></span>}
-            />
-          }
-          </div>
+            <SoundSwitch soundOpacity={soundOpacity} soundOn={soundOn} soundToggle={soundToggle} soundOnOffText={soundOnOffText} />
           <br />
           <div>
-            <button className="btn waves-effect indigo darken-4" onClick={onStart}>Start</button>          
+            <button className="btn waves-effect transparent btnBlueBorder" onClick={onStart}>Start</button>         
           </div>
           <div>
-            <Link to={`/mantras`}><button className="btn transparent" style={{marginTop: 50}}>All Mantras</button></Link>
-            <Link to={`/mandalas`}><button className="btn transparent" style={{marginTop: 50}}>All Mandalas</button></Link>
-            <br />
-            <Link to={`/mantras/${id}/edit`}><button className="btn transparent">Edit this mantra</button></Link>
+            <div style={{margin: 10}}>
+              <Link to={`/mantras`}><button className="btn transparent btnGreyBorder" style={{marginTop: 50}}>All Mantras</button></Link>
+              <Link to={`/mandalas`}><button className="btn transparent btnGreyBorder" style={{marginTop: 50}}>All Mandalas</button></Link>
+            </div>
+            <div>
+              <Link to={`/mantras/${id}/edit`}><button className="btn transparent btnGreyBorder">Edit this mantra</button></Link>
+            </div>
           </div>
         </Grid>
       </Grid>

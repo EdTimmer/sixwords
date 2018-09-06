@@ -9,7 +9,7 @@ const Mantras = ({ mantras }) => {
         <h1 style={{color: "white"}}>Mantras</h1>
       </div>      
       <div style={{textAlign: 'center'}}>
-        <Link to={`/mantracreate`}><button className="btn transparent" style={{marginBottom: 50}}>Create New Mantra</button></Link>
+        <Link to={`/mantracreate`}><button className="btn transparent btnGreyBorder" style={{marginBottom: 50}}>Create</button></Link>
       </div>
       <div>
         {

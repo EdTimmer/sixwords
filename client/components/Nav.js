@@ -56,30 +56,27 @@ class Nav extends React.Component {
         <Divider />
         <List>
           <ListItemText>
-            <a href="/">home</a>          
-          </ListItemText>
-        </List>
-        
-        <List>
-          <ListItemText>
-            <a href="/#/mantracreate">create mantra</a>          
-          </ListItemText>
-        </List>
-        
-        <List>
-          <ListItemText>
-            <a href="/#/mandalacreate">upload new mandala</a>
+            <a href="/">Home</a>          
           </ListItemText>
         </List>
         <List>
           <ListItemText>
-            <a href="/#/mantras">mantras</a>          
+            <a href="/#/mantras">Mantras</a>          
           </ListItemText>
         </List>
-        
         <List>
           <ListItemText>
-            <a href="/#/mandalas">mandalas</a>          
+            <a href="/#/mandalas">Mandalas</a>          
+          </ListItemText>
+        </List>
+        <List>
+          <ListItemText>
+            <a href="/#/mantracreate">Create mantra</a>          
+          </ListItemText>
+        </List>
+        <List>
+          <ListItemText>
+            <a href="/#/mandalacreate">Upload new mandala</a>
           </ListItemText>
         </List>
       </div>

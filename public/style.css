@@ -16,6 +16,22 @@ body {
   padding: 25px;
 }
 
+.paddedSmall {
+  padding: 10px;
+  margin: 10px;
+}
+
 .extrapadded {
   margin: 300px, 25px, 80px, 25px;
+}
+
+.btnGreyBorder {
+  border: 1px solid grey;
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 230px;  
+}
+
+.btnBlueBorder {
+  border: 2px solid blue
 }
