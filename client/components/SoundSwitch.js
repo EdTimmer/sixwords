@@ -1,7 +1,10 @@
 import React from 'react';
 import { Switch, FormControlLabel } from '@material-ui/core';
 
-const SoundSwitch = ({soundOpacity, soundOn, soundOnOffText, soundToggle}) => {
+const SoundSwitch = ({soundToggle, soundOn}) => {
+  const soundOnOffText = soundOn ? 'sound on' : 'sound off';
+  const soundOpacity = soundOn ? (1) : (0.5);
+  
   return (
     <div>
       {
@@ -12,7 +15,7 @@ const SoundSwitch = ({soundOpacity, soundOn, soundOnOffText, soundToggle}) => {
                 checked={soundOn}
                 onChange={soundToggle}
                 value="soundOn"
-                color="primary"
+                color="secondary"
               />
             }
             label={<span style={{ color: 'white', fontSize: 20 }}><p>{soundOnOffText}</p></span>}
@@ -20,6 +23,6 @@ const SoundSwitch = ({soundOpacity, soundOn, soundOnOffText, soundToggle}) => {
       }
     </div>
   );
-};
+}
 
 export default SoundSwitch;

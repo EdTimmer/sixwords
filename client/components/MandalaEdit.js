@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Grid, Paper, Switch, FormControlLabel } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { deleteMandala, updateMandala } from '../store/mandalas';
+import Footer from './Footer';
 
 class MandalaEdit extends React.Component {
   constructor(props) {
@@ -91,16 +92,13 @@ class MandalaEdit extends React.Component {
 
     return (
       <div style={{flexGrow: 1}}>
-        <Grid container spacing={0}>
+        <Grid container spacing={0} justify="center">
           <Grid item xs={12}>
             <h4 style={{color: "white", textAlign: "center"}}><Link to={`/mandalas/${id}`}>{name}</Link></h4>
             <h5 style={{color: "white", textAlign: "center", marginBottom: "80px"}}>edit mandala</h5>
           </Grid>  
-          <Grid item xs={2}>
-            <Paper style={{textAlign: "center", background: 'transparent'}}>             
-            </Paper>
-          </Grid> 
-          <Grid item xs={8}>            
+          <Grid item xs={2} />
+          <Grid item xs={8}>
             <div className="white-text">
               <form onSubmit={ handleSubmit } className="white-text">
                 <div>
@@ -123,33 +121,47 @@ class MandalaEdit extends React.Component {
                     ) : (null)
                   }
                 </div>
-                <div>
-                  <h5>Image:</h5>
-                </div>
-                <div className="white-text">
-                  {
-                    mandala ? (
-                      <img src={mandala.imageURL} width={200} />
-                    ) : null
-                  }
-                </div>
-                <div className="padded">                
-                  <input type="file" name='imageURL' onChange={previewFile} />
-                </div>
-                <br />
-                <div style={{textAlign: 'center'}}>
-                  <button className="white-text btn" onClick={onChange}>Update mandala</button>
-                </div>
+                <Grid container spacing={12}>
+                  <Grid item xs={4}>
+                    <div>
+                      <h5>Image:</h5>
+                    </div>
+                    <div className="white-text">
+                      {
+                        mandala ? (
+                          <img src={mandala.imageURL} width={200} />
+                        ) : null
+                      }
+                    </div>
+                    {/*<div className="padded">                
+                      <input type="file" name='imageURL' onChange={previewFile} />
+                    </div>*/}
+                    <div>
+                      <label for="file-upload" class="custom-file-upload">
+                        SELECT IMAGE
+                      </label>
+                      <input id="file-upload" type="file" name='imageURL' onChange={previewFile} />
+                    </div>
+                  </Grid>
+
+                  <Grid item xs={4}>
+                    <div style={{textAlign: 'center', marginTop: 150}}>
+                      <button className="white-text btn transparent btnBlueBorder" onClick={onChange}>Update</button>
+                    </div>
+                  </Grid>
+
+                  <Grid item xs={4}>
+                    <div style={{textAlign: 'center', marginTop: 150}}>
+                      <button className="white-text btn transparent btnRedBorder" onClick={onDelete}>Delete</button>
+                    </div>
+                  </Grid>
+                </Grid>
               </form>
-              <br />
-              <div style={{textAlign: 'right'}}>
-                <button className="white-text btn red" onClick={onDelete}>Delete mandala</button>
-              </div>
             </div>
           </Grid>
-          <Grid item xs={2}>
-            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
-            </Paper>
+          <Grid item xs={2} />
+          <Grid item xs={12} className="footer">
+            <Footer />
           </Grid>
         </Grid>
       </div>

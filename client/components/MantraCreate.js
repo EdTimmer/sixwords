@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { saveMantra } from '../store/mantras';
 import LineCreate from './LineCreate';
 import { Button, Grid, Paper } from '@material-ui/core';
+// import Footer from './Footer';
 
 class MantraCreate extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class MantraCreate extends Component {
     const { onChange, onAddLine, onSave, onNewLine } = this;
     return (
       <div style={{flexGrow: 1, color: "white"}}>
-        <Grid container spacing={0}>
+        <Grid container spacing={0} justify="center">
           <Grid item xs={12}>            
             <h4 style={{textAlign: "center", marginBottom: "80px"}}>New Mantra</h4>
           </Grid>  
@@ -81,15 +82,14 @@ class MantraCreate extends Component {
                 }                
               </div>
               <div className="padded" style={{textAlign: "center"}}>
-                <button className="btn" type="submit"> Save Mantra </button>
+                <button className="btn transparent btnBlueBorder" type="submit">Save</button>
               </div>            
             </form>
           </Grid>  
           <Grid item xs={2}>
             <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
             </Paper>
-          </Grid> 
- 
+          </Grid>
         </Grid>
       </div>
     )

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { saveMandala } from '../store/mandalas';
 import { Button, Grid, Paper } from '@material-ui/core';
+import Footer from './Footer';
 
 class MandalaCreate extends Component {
   constructor(props) {
@@ -44,36 +45,45 @@ class MandalaCreate extends Component {
     const { onChange, onSave, previewFile } = this;
     return (
       <div style={{flexGrow: 1, color: "white"}}>
-        <Grid container spacing={24}> 
-          <Grid item xs={12}>            
+        <Grid container spacing={24} justify="center">
+          <Grid item xs={12}>
             <h4 className="padded" style={{textAlign: "center", marginBottom: "80px"}}>New Mandala</h4>
-          </Grid> 
+          </Grid>
           <Grid item xs={1}>
             <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
             </Paper>
           </Grid> 
-          <Grid item xs={5}>            
+          <Grid item xs={5}>
             <form onSubmit={ onSave }>
               <div>
                 <input name="name" onChange={onChange} placeholder="Mandala Name" />
               </div>
               <div>
-                <input name="description" onChange={onChange} placeholder="description" />
+                <input name="description" onChange={onChange} placeholder="description (optional)" />
               </div>
-              <div className="padded">
-                <label htmlFor='imageURL'>New Image: </label><br />
+              {/*<div className="padded">
+                <label htmlFor='imageURL' style={{fontSize: 20}}>New Image:</label><br />
                 <input type="file" name='imageURL' onChange={previewFile} />
-                <img src="/images/Preview-icon.png" alt="Image preview..." width={100} /> 
+                <img src="/images/Preview-icon.png" alt="Image preview..." width={100} />
+                </div>*/}
+              <div>
+                <label for="file-upload" class="custom-file-upload">
+                  SELECT IMAGE
+                </label>
+                <input id="file-upload" type="file" name='imageURL' onChange={previewFile} />
               </div>
               <div className="padded" style={{textAlign: "center"}}>
-                <button className="btn waves-effect" type="submit"> Save Mandala </button>
+                <button className="btn transparent btnBlueBorder" type="submit">Save</button>
               </div>
             </form>
           </Grid>
           <Grid item xs={6}>
-            <Paper style={{textAlign: "center", background: 'transparent'}}>            
+            <Paper style={{textAlign: "center", background: 'transparent'}}>
               <img src="/images/mandalapurple.jpg" width={400} />
             </Paper>
+          </Grid>
+          <Grid item xs={12} className="footer">
+            <Footer />
           </Grid>
         </Grid>
       </div>

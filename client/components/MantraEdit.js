@@ -33,7 +33,7 @@ class MantraEdit extends React.Component {
         name: nextProps.mantra.name,
         description: nextProps.mantra.description,
         lines: nextProps.mantra.lines
-      })
+      });
     }
   }
 
@@ -82,29 +82,27 @@ class MantraEdit extends React.Component {
     ev.preventDefault();
     const mantraInfo = {
       id: this.props.mantra.id
-    }
+    };
     this.props.deleteMantra(mantraInfo);
   }
   render() {
     const { mantra } = this.props;
     const { id, name, description, lines, line, showLineCreate, showNewLineBtn } = this.state;
     const { onDelete, onDeleteLine, onChange, handleLineChange, handleSubmit, onNewLine, onAddLine } = this;
+    const deleteIcon = <img src="/images/delete.png" />;
     // if (!mantra) {
     //   return null;
     // }
 
     return (
       <div style={{flexGrow: 1}}>
-        <Grid container spacing={0}>
+        <Grid container spacing={0} justify="center">
           <Grid item xs={12}>
             <h4 style={{color: "white", textAlign: "center"}}><Link to={`/mantras/${id}`}>{name}</Link></h4>
             <h5 style={{color: "white", textAlign: "center", marginBottom: "80px"}}>edit mantra</h5>
-          </Grid>  
-          <Grid item xs={2}>
-            <Paper style={{textAlign: "center", background: 'transparent'}}>             
-            </Paper>
-          </Grid> 
-          <Grid item xs={8}>            
+          </Grid>
+          <Grid item xs={2} />
+          <Grid item xs={8}>
             <div className="white-text">
               <form onSubmit={ handleSubmit } className="white-text">
                 <div>
@@ -118,7 +116,7 @@ class MantraEdit extends React.Component {
                   }
                 </div>
                 <div>
-                  <h5>Description:</h5>
+                  <h5>Description (optioinal):</h5>
                 </div>
                 <div>
                   {
@@ -137,7 +135,8 @@ class MantraEdit extends React.Component {
                         return (
                           <div key={lines.indexOf(line)} style={{display: 'flex', flexDirection: 'row'}}>
                             <input value={line} name={lines.indexOf(line)} onChange={ handleLineChange } />
-                            <button className="white-text btn red" name={lines.indexOf(line)} onClick={ onDeleteLine }>X</button>                      
+                            <img src="/images/delete.png" width={30} height={30} name={lines.indexOf(line)} onClick={ onDeleteLine } />
+                            {/*<button className="white-text btn red" name={lines.indexOf(line)} onClick={ onDeleteLine }>{deleteIcon}</button>*/}                      
                           </div>
                         );
                       })
@@ -151,24 +150,21 @@ class MantraEdit extends React.Component {
                 </div>
                 <div>
                   {
-                    showNewLineBtn ? (<button className="btn" onClick={onNewLine}>New Line</button>) : (null)
+                    showNewLineBtn ? (<button className="btn transparent btnBlueBorder" onClick={onNewLine}>New Line</button>) : (null)
                   }                
                 </div>
                 <br />
                 <div style={{textAlign: 'center'}}>
-                  <button className="white-text btn" onClick={onChange}>Update Mantra</button>
+                  <button className="white-text btn transparent btnBlueBorder" onClick={onChange}>Update</button>
                 </div>
               </form>
               <br />
-              <div style={{textAlign: 'right'}}>
-                <button className="white-text btn red" onClick={onDelete}>Delete Mantra</button>
+              <div style={{textAlign: 'left'}}>
+                <button className="white-text btn transparent btnRedBorder" onClick={onDelete}>Delete</button>
               </div>
             </div>
           </Grid>
-          <Grid item xs={2}>
-            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
-            </Paper>
-          </Grid>
+          <Grid item xs={2} />
         </Grid>
       </div>
     );

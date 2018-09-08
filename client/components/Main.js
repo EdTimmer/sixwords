@@ -14,7 +14,7 @@ import MantraCreate from './MantraCreate';
 import MandalaCreate from './MandalaCreate';
 import MantraEdit from './MantraEdit';
 import MandalaEdit from './MandalaEdit';
-
+// import Footer from './Footer';
 
 class Main extends React.Component {
   componentDidMount() {
@@ -39,6 +39,7 @@ class Main extends React.Component {
                 <Route exact path="/mandalas" component={ Mandalas } />
                 <Route exact path="/" component={ Home } />
               </Switch>
+              {/*<Footer />*/}
             </div>
         </div>
       </HashRouter>
