@@ -61,6 +61,11 @@ body {
   font-family: "Brush Script MT"
 }
 
+.mantraFont {
+  font-family: "Brush Script MT";
+  font-style: italic;
+}
+
 .paddedGrid {
   margin-left: 200;
   margin-right: 50;

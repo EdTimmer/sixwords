@@ -7,7 +7,7 @@ const mantras = [
   {
     // id: 1,
     name: `Six Words`,
-    description: `Tilopa's advice`,
+    description: `Tilopa's six words of advice`,
     lines: [
       `Don't think about the past`,
       `Don't think about the future`,

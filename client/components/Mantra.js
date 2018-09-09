@@ -112,7 +112,7 @@ class Mantra extends React.Component {
       <Grid container spacing={24} justify="center">
         <Grid item xs={12} style={{textAlign: 'center', color: 'white'}}>
           <div style={{transition: 'all 2s ease-in-out', opacity: opacity, transform: `scale(${this.state.scale})`, marginTop: 150}}>                       
-            <h1>{mantra.lines ? mantra.lines[counter] : null}</h1>       
+            <h1 style={{fontStyle: "italic"}}>{mantra.lines ? mantra.lines[counter] : null}</h1>
           </div>
         </Grid>
         
@@ -120,6 +120,16 @@ class Mantra extends React.Component {
           <Paper elevation={1} style={{background: 'transparent'}}>
             <h3>{mantra.name}</h3>
             <h5>{mantra.description}</h5>
+            <div>
+              {
+                mantra.name === 'Six Words' ? (
+                  <div>
+                    <a href="http://unfetteredmind.org/tilopas-advice/" rel="noopener noreferrer" target="_blank"><h5>About This Mantra</h5></a>
+                    <a href="https://en.wikipedia.org/wiki/Tilopa" rel="noopener noreferrer" target="_blank"><h5>About Tilopa</h5></a>
+                  </div>
+                  ) : (null)
+              }
+            </div>
           </Paper>
           <div>
             <SoundSwitch soundToggle={soundToggle} soundOn={soundOn} />
@@ -136,7 +146,7 @@ class Mantra extends React.Component {
         </Grid>
         <Grid item xs={12} style={{textAlign: 'center', marginTop: 150, transition: 'all 2s ease-out', opacity: startOpacity}} className="footer">
           <Footer />
-        </Grid>
+            </Grid>
       </Grid>
     );
   }
