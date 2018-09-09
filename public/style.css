@@ -79,4 +79,5 @@ input[type="file"] {
   /* font-weight: bold; */
   font-size: 15px;
   color: white;
+  width: 150px;
 }

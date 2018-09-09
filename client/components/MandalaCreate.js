@@ -49,10 +49,7 @@ class MandalaCreate extends Component {
           <Grid item xs={12}>
             <h4 className="padded" style={{textAlign: "center", marginBottom: "80px"}}>New Mandala</h4>
           </Grid>
-          <Grid item xs={1}>
-            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
-            </Paper>
-          </Grid> 
+          <Grid item xs={1} />
           <Grid item xs={5}>
             <form onSubmit={ onSave }>
               <div>
@@ -77,11 +74,12 @@ class MandalaCreate extends Component {
               </div>
             </form>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={5}>
             <Paper style={{textAlign: "center", background: 'transparent'}}>
               <img src="/images/mandalapurple.jpg" width={400} />
             </Paper>
           </Grid>
+          <Grid item xs={1} />
           <Grid item xs={12} className="footer">
             <Footer />
           </Grid>
