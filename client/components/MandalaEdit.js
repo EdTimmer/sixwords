@@ -112,7 +112,7 @@ class MandalaEdit extends React.Component {
                   }
                 </div>
                 <div>
-                  <h5>Description:</h5>
+                  <h5>Description (optional):</h5>
                 </div>
                 <div>
                   {
@@ -123,10 +123,7 @@ class MandalaEdit extends React.Component {
                 </div>
                 <Grid container spacing={12}>
                   <Grid item xs={4}>
-                    <div>
-                      <h5>Image:</h5>
-                    </div>
-                    <div className="white-text">
+                    <div className="white-text" className="padded" style={{textAlign: "center"}}>
                       {
                         mandala ? (
                           <img src={mandala.imageURL} width={200} />
@@ -136,8 +133,8 @@ class MandalaEdit extends React.Component {
                     {/*<div className="padded">                
                       <input type="file" name='imageURL' onChange={previewFile} />
                     </div>*/}
-                    <div>
-                      <label for="file-upload" class="custom-file-upload">
+                    <div style={{textAlign: "center"}}>
+                      <label htmlFor="file-upload" className="custom-file-upload">
                         SELECT IMAGE
                       </label>
                       <input id="file-upload" type="file" name='imageURL' onChange={previewFile} />

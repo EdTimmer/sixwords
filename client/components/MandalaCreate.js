@@ -66,13 +66,13 @@ class MandalaCreate extends Component {
                 <input type="file" name='imageURL' onChange={previewFile} />
                 <img src="/images/Preview-icon.png" alt="Image preview..." width={100} />
                 </div>*/}
-              <div>
-                <label for="file-upload" class="custom-file-upload">
+              <div className="padded" style={{textAlign: 'center'}}>
+                <label htmlFor="file-upload" className="custom-file-upload">
                   SELECT IMAGE
                 </label>
-                <input id="file-upload" type="file" name='imageURL' onChange={previewFile} />
+                <input id="file-upload" type="file" name="imageURL" onChange={previewFile} />
               </div>
-              <div className="padded" style={{textAlign: "center"}}>
+              <div className="padded" style={{textAlign: 'center'}}>
                 <button className="btn transparent btnBlueBorder" type="submit">Save</button>
               </div>
             </form>
