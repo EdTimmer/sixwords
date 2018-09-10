@@ -18,10 +18,10 @@ const Home = () => {
         </Grid>
         <Grid item xs={12} style={{textAlign: 'center', marginTop: 70}}>
           {
-            image ? (<img src={image} width={700} />) : (null)
+            image ? (<img src={image} height={500} />) : (null)
           }
         </Grid>
-        <Grid item xs={12} className="footer">
+        <Grid item xs={12} style={{textAlign: "center"}}>
           <Footer />
         </Grid>
       </Grid>

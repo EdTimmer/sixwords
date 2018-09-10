@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Paper, Switch, FormControlLabel } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { deleteMandala, updateMandala } from '../store/mandalas';
 import Footer from './Footer';
@@ -157,9 +157,9 @@ class MandalaEdit extends React.Component {
             </div>
           </Grid>
           <Grid item xs={2} />
-          <Grid item xs={12} className="footer">
+          {/*<Grid item xs={12} className="footer">
             <Footer />
-          </Grid>
+          </Grid>*/}
         </Grid>
       </div>
     );

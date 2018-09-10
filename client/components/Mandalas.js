@@ -25,9 +25,9 @@ const Mandalas = ({ mandalas }) => {
             })
           }
         </Grid>
-        <Grid item xs={12} className="footer">
+        {/*<Grid item xs={12} className="footer">
           <Footer />
-        </Grid>
+        </Grid>*/}
       </Grid>
     </Fragment>
   );

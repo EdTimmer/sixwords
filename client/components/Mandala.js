@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Paper, Switch, FormControlLabel } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import SoundSwitch from './SoundSwitch';
 import Footer from './Footer';
@@ -95,17 +95,15 @@ class Mandala extends React.Component {
     return (
       <div style={{flexGrow: 1, color: "white"}}>
         <Grid container spacing={24} justify="center">
-          <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
-            <Paper elevation={1} style={{background: 'transparent'}}>
-              <h5>{mandala.name}</h5>
-              <p>{mandala.description}</p>
-            </Paper>
+          <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>            
+            <h5>{mandala.name}</h5>
+            <p>{mandala.description}</p>            
           </Grid>
 
           <Grid item xs={2} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}} />
           
           <Grid item xs={8} style={{textAlign: 'center', color: 'white', transition: 'all 2s ease-in-out', opacity: opacity, marginTop: 50}}>
-            <img onClick={fadeOut} src={mandala.imageURL} width={500} />
+            <img onClick={fadeOut} src={mandala.imageURL} height={500} />
           </Grid>
           
           <Grid item xs={2} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>

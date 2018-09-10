@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Paper, Switch, FormControlLabel } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { deleteMantra, updateMantra } from '../store/mantras';
 import LineCreate from './LineCreate';

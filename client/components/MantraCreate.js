@@ -86,10 +86,7 @@ class MantraCreate extends Component {
               </div>            
             </form>
           </Grid>  
-          <Grid item xs={2}>
-            <Paper style={{textAlign: "center", backgroundColor: 'black'}}>            
-            </Paper>
-          </Grid>
+          <Grid item xs={2} />
         </Grid>
       </div>
     )

@@ -80,9 +80,9 @@ class MandalaCreate extends Component {
             </Paper>
           </Grid>
           <Grid item xs={1} />
-          <Grid item xs={12} className="footer">
+          {/*<Grid item xs={12} className="footer">
             <Footer />
-          </Grid>
+              </Grid>*/}
         </Grid>
       </div>
     )

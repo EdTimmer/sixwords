@@ -110,13 +110,40 @@ class Mantra extends React.Component {
        
     return (
       <Grid container spacing={24} justify="center">
-        <Grid item xs={12} style={{textAlign: 'center', color: 'white'}}>
-          <div style={{transition: 'all 2s ease-in-out', opacity: opacity, transform: `scale(${this.state.scale})`, marginTop: 150}}>                       
+        <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
+          <h3>{mantra.name}</h3>
+          <h5>{mantra.description}</h5>
+        </Grid>
+        <Grid item xs={2} />
+        <Grid item xs={8} style={{textAlign: 'center', color: 'white'}}>
+          <div style={{transition: 'all 2s ease-in-out', opacity: opacity, transform: `scale(${this.state.scale})`, marginTop: 50}}>                       
             <h1 style={{fontStyle: "italic"}}>{mantra.lines ? mantra.lines[counter] : null}</h1>
           </div>
         </Grid>
+        <Grid item xs={2} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
+          <div>
+            {
+              mantra.name === 'Six Words' ? (
+                <div>
+                  <a href="http://unfetteredmind.org/tilopas-advice/" rel="noopener noreferrer" target="_blank"><h5>About This Mantra</h5></a>
+                  <a href="https://en.wikipedia.org/wiki/Tilopa" rel="noopener noreferrer" target="_blank"><h5>About Tilopa</h5></a>
+                </div>
+                ) : (null)
+            }
+          </div>
+          <div>
+            <SoundSwitch soundToggle={soundToggle} soundOn={soundOn} />
+          </div>
+          <br />
+          <div>
+            <button className="btn waves-effect transparent btnBlueBorder" onClick={onStart}>Start</button>
+          </div>
+          <div style={{marginTop: 100}}>
+            <Link to={`/mantras/${id}/edit`}><button className="btn transparent btnGreyBorder">Edit</button></Link>
+          </div>
+        </Grid>
         
-        <Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
+        {/*<Grid item xs={12} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
           <Paper elevation={1} style={{background: 'transparent'}}>
             <h3>{mantra.name}</h3>
             <h5>{mantra.description}</h5>
@@ -143,10 +170,10 @@ class Mantra extends React.Component {
               <Link to={`/mantras/${id}/edit`}><button className="btn transparent btnGreyBorder">Edit</button></Link>
             </div>
           </div>
-        </Grid>
+            </Grid>*/}
         <Grid item xs={12} style={{textAlign: 'center', marginTop: 150, transition: 'all 2s ease-out', opacity: startOpacity}} className="footer">
           <Footer />
-            </Grid>
+        </Grid>
       </Grid>
     );
   }

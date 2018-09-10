@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, FormControlLabel } from '@material-ui/core';
 
 const SoundSwitch = ({soundToggle, soundOn}) => {
-  const soundOnOffText = soundOn ? 'sound on' : 'sound off';
+  const soundOnOffText = soundOn ? 'start bell on' : 'start bell off';
   const soundOpacity = soundOn ? (1) : (0.5);
   
   return (
