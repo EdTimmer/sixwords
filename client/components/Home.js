@@ -16,7 +16,7 @@ const Home = () => {
         <Grid item xs={12} style={{textAlign: 'center'}}>
           <h5>Mandala (Sanskrit: मण्डल): "circle"</h5>
         </Grid>
-        <Grid item xs={12} style={{textAlign: 'center', marginTop: 70}}>
+        <Grid item xs={12} style={{textAlign: 'center'}}>
           {
             image ? (<img src={image} height={500} />) : (null)
           }
