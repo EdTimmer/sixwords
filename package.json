@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm run webpack",
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "start:dev": "npm run webpack -- -w & nodemon server.js --ignore dist/ --ignore public/"
   },
   "keywords": [],
@@ -15,9 +15,9 @@
   "dependencies": {
     "@material-ui/core": "^1.5.0",
     "@material-ui/icons": "^2.0.2",
+    "ajv": "^6.5.3",
     "axios": "^0.18.0",
     "babel-core": "^6.26.0",
-    "babel-jest": "^23.4.2",
     "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -39,5 +39,12 @@
     "sequelize": "^4.35.1",
     "webpack": "^3.11.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "jest-enzyme": "^6.0.4"
+  }
 }

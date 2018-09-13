@@ -121,7 +121,7 @@ class MandalaEdit extends React.Component {
                     ) : (null)
                   }
                 </div>
-                <Grid container spacing={12}>
+                <Grid container spacing={0}>
                   <Grid item xs={4}>
                     <div className="white-text" className="padded" style={{textAlign: "center"}}>
                       {

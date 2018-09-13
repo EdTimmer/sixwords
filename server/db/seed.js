@@ -6,8 +6,8 @@ const Mandala = require('./Mandala');
 const mantras = [
   {
     // id: 1,
-    name: `Six Words`,
-    description: `Tilopa's six words of advice`,
+    name: `Six Words of Advice`,
+    description: `Tilopa's teaching to Naropa, which consists of six words in the Tibetan language`,
     lines: [
       `Don't think about the past`,
       `Don't think about the future`,

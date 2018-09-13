@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import SoundSwitch from './SoundSwitch';
 import Footer from './Footer';
@@ -22,6 +22,17 @@ class Mantra extends React.Component {
     this.soundToggle = this.soundToggle.bind(this);
     this.initialComponentsFadeOut = this.initialComponentsFadeOut.bind(this);
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.mantra) {
+  //     this.setState({
+  //       id: nextProps.mantra.id,
+  //       name: nextProps.mantra.name,
+  //       description: nextProps.mantra.description,
+  //       lines: nextProps.mantra.lines
+  //     });
+  //   }
+  // }
 
   initialComponentsFadeOut() {
     this.setState({ startOpacity: 0 });
@@ -100,10 +111,16 @@ class Mantra extends React.Component {
   }
 
   render() {
-    const { mantra, id } = this.props;
+    const { mantras, mantra, id } = this.props;
     const { counter, soundOn, opacity, startOpacity } = this.state;
     const { onStart, soundToggle } = this;
     
+    // const nextMantraIndex = mantras.indexOf(mantra) + 1;
+    // const nextMantraId = nextMantraIndex < mantras.length ? mantras[nextMantraIndex].id : mantras[0].id;
+    // const priorMantraIndex = mantras.indexOf(mantra) - 1;
+    // const lastMantraIndex = mantras.length - 1;
+    // const priorMantraId = priorMantraIndex !== -1 ? mantras[priorMantraIndex].id : mantras[lastMantraIndex].id;
+
     if (!mantra ) {
       return null;
     }
@@ -123,10 +140,9 @@ class Mantra extends React.Component {
         <Grid item xs={2} style={{textAlign: 'center', transition: 'all 2s ease-out', opacity: startOpacity, color: 'white'}}>
           <div>
             {
-              mantra.name === 'Six Words' ? (
+              mantra.name === 'Six Words of Advice' ? (
                 <div>
-                  <a href="http://unfetteredmind.org/tilopas-advice/" rel="noopener noreferrer" target="_blank"><h5>About This Mantra</h5></a>
-                  <a href="https://en.wikipedia.org/wiki/Tilopa" rel="noopener noreferrer" target="_blank"><h5>About Tilopa</h5></a>
+                  <a href="https://en.wikipedia.org/wiki/Tilopa" rel="noopener noreferrer" target="_blank"><h5>About Tilopa and This Mantra</h5></a>
                 </div>
                 ) : (null)
             }
@@ -138,6 +154,10 @@ class Mantra extends React.Component {
           <div>
             <button className="btn waves-effect transparent btnBlueBorder" onClick={onStart}>Start</button>
           </div>
+          {/*<div style={{marginTop: 50}}>
+            <Link to={`/mantras/${priorMantraId}`}><button>Prior</button></Link>
+            <Link to={`/mantras/${nextMantraId}`}><button>Next</button></Link>
+          </div>*/}
           <div style={{marginTop: 100}}>
             <Link to={`/mantras/${id}/edit`}><button className="btn transparent btnGreyBorder">Edit</button></Link>
           </div>
@@ -180,11 +200,12 @@ class Mantra extends React.Component {
 }
 
 const mapStateToProps = ({ mantras }, { id }) => {
-  if (!id) {
-    return null;
-  }
+  // if (!id) {
+  //   return null;
+  // }
   const mantra = mantras.find(mantra => mantra.id === id);
   return {
+    mantras,
     mantra,
     id
   };
